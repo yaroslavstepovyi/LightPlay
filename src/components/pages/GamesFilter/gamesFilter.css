@@ -1,0 +1,241 @@
+.filter__wrap {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.filter__logo h3 {
+font-weight: 900;
+font-size: 18px;
+line-height: 27px;
+color: #ffffff;
+max-width: 96px;
+}
+
+.filter__logo-mobile h3 {
+display: none;
+font-weight: 900;
+font-size: 14px;
+line-height: 27px;
+color: #fff;
+}
+
+.filter__search {
+display: flex;
+align-items: center;
+gap: 20px;
+}
+
+.filter__search-btn {
+display: flex;
+padding: 6px 12px;
+width: 100%;
+height: 100%;
+max-width: 150px;
+max-height: 36px;
+font-family: "Poppins";
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+color: #fff;
+background: linear-gradient(99.05deg, #bc3cd8 0.07%, #c54b8c 106.32%);
+border-radius: 6px;
+border: none;
+cursor: pointer;
+}
+
+.filter__search-btn:hover {
+background: linear-gradient(rgb(192, 51, 223), rgb(185, 53, 123));
+}
+
+.filter__search select {
+display: flex;
+align-items: center;
+width: 160px;
+height: 36px;
+padding-left: 9px;
+appearance: none;
+outline: 0;
+border: 1px solid #bc3cd8;
+border-radius: 6px;
+background: #0e0e0e;
+font-family: "Poppins";
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 143%;
+letter-spacing: 0.018em;
+color: #ffffff;
+cursor: pointer;
+}
+
+.filter__search-box {
+position: relative;
+}
+
+.filter__search-box-arrow {
+position: absolute;
+display: block;
+top: 18px;
+right: 16px;
+background: #0e0e0e;
+max-width: 5px;
+max-height: 10px;
+border: 1px solid;
+border-radius: 4px;
+pointer-events: none;
+}
+
+.filter__search-box-arrow::before,
+.filter__search-box-arrow::after {
+position: absolute;
+content: "";
+width: 0;
+height: 0;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+}
+
+.filter__search-box-arrow::before {
+border-top: 5px solid #bc3cd8;
+border-left: 5px solid transparent;
+border-right: 5px solid transparent;
+}
+
+.reset-button {
+display: none;
+height: 34px;
+font-family: "Poppins";
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+color: #fff;
+background: rgba(14, 14, 14, 1);
+border-radius: 6px;
+border: none;
+cursor: pointer;
+}
+
+.reset-btn{
+max-width: 20px;
+}
+
+.filter__search-option {
+display: flex;
+align-items: center;
+font-family: "Poppins";
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 143%;
+letter-spacing: 0.018em;
+color: #ffffff;
+background: rgba(1, 2, 8, 1);
+cursor: pointer;
+box-shadow: 1px 1px 1px grey;
+outline: 0;
+}
+
+@media (max-width: 1311px) {
+
+}
+
+@media (max-width: 1200px) {
+
+}
+
+@media (max-width: 921px) {
+    /* filter */
+
+    .filter__search-btn {
+        padding: 5px 11px;
+        font-size: 15px;
+    }
+
+    .filter__search {
+        gap: 18px;
+    }
+
+    .filter__search select {
+        width: 140px;
+        height: 34px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 766px) {
+    /* filter */
+
+    .filter__logo h3 {
+        font-size: 17px;
+    }
+
+    .filter__search {
+        gap: 14px;
+    }
+
+    .filter__search-btn {
+        padding: 4px 10px;
+        font-size: 13px;
+    }
+
+    .filter__search select {
+        width: 130px;
+        font: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+
+}
+
+@media (min-width: 390px) and (max-width: 450px) {
+    /* filter */
+
+    .filter__wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .filter__logo h3 {
+        width: 100%;
+    }
+
+    .filter__search {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .filter__search select {
+        padding-left: 20px;
+        width: 148px;
+        height: 36px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+    }
+
+    .filter__logo-mobile h3 {
+        max-width: 115px;
+        line-height: 18px;
+    }
+
+    .filter__search-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px;
+        max-width: 158px;
+        max-height: 36px;
+        padding: 6px 16px;
+        align-content: center;
+    }
+}
