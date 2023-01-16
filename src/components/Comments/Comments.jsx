@@ -29,7 +29,7 @@ export const Comments = () => {
                       <img src={comment.img} alt={comment.alt} />
                       <div>
                         <p className="comments__stars-item-name">
-                          ${comment.userName}
+                          {comment.userName}
                         </p>
                         <a href={0} className="comments__stars-item-name">
                           @{comment.userNickName}
