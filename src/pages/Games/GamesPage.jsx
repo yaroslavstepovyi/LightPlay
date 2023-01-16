@@ -6,14 +6,14 @@ import { DefaultLayout } from '../../layouts/DefaultLayout'
 
 export const GamesPage = () => {
   return (
-      <div>
+      <>
         <div className="header__radius"></div>
           <DefaultLayout>
             <GamesFilter />
             <GamesContent />
             <GamesPagination />
           </DefaultLayout>
-      </div>
+      </>
   )
 }
 

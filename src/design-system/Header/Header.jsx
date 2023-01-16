@@ -7,15 +7,23 @@ import { DialogSignIn } from "../Dialogs";
 
 export const Header = () => {
   const [isDialogVisible, setIsDialogVisible] = React.useState(false);
+  const [isBurgerMenuActive, setIsBurgerMenuActive] = React.useState(false);
 
   const handleOpenDialogSignIn = () => {
     setIsDialogVisible(true);
   };
 
-  const handleBlurHide = () =>{
+  const handleBackroundBlurHide = () => {
     setIsDialogVisible(false);
-  }
+  };
 
+  const handleBurgerMenuToggle = () => {
+    setIsBurgerMenuActive(true);
+  };
+
+  const handleNavSmall = () =>{
+    setIsBurgerMenuActive(false);
+  }
   return (
     <>
       <header className="header">
@@ -44,12 +52,40 @@ export const Header = () => {
             Sign In
           </button>
         </div>
-          {isDialogVisible && <div className="background-blur" onClick={() => handleBlurHide()}></div>}
+        {isDialogVisible && (
+          <div
+            className="background-blur"
+            onClick={() => handleBackroundBlurHide()}
+          ></div>
+        )}
         <button
-          /* onclick="toggleNavigBtn()" */ 
           className="header__nav-small"
+          onClick={() => handleBurgerMenuToggle()}
         ></button>
       </header>
+      {isBurgerMenuActive && (
+        <div
+          className="header__nav-mobile"
+          onClick={() => handleNavSmall()}
+        >
+          <ul className="header__links">
+            <li className="header__link">
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li className="header__link">
+              <NavLink to="/games">Games</NavLink>
+            </li>
+            <li className="header__link">
+              <NavLink to="/users">Users</NavLink>
+            </li>
+            <li>
+              <button type="submit" className="header__nav-btn-mobile">
+                Sign In
+              </button>
+            </li>
+          </ul>
+        </div>
+      )}
       {isDialogVisible && <DialogSignIn />}
     </>
   );

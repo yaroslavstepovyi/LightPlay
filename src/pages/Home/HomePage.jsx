@@ -8,7 +8,7 @@ import { DefaultLayout } from "../../layouts/DefaultLayout";
 
 export const HomePage = () => {
   return (
-    <div>
+    <>
         <div className="header__radius"></div>
         <DefaultLayout>
             <Hero />
@@ -17,6 +17,6 @@ export const HomePage = () => {
             <Comments />
             <Values />
         </DefaultLayout>
-    </div>
+    </>
   )
 }

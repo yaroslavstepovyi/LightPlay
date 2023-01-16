@@ -5,7 +5,7 @@ import { DialogWrapper } from "./DialogWrapper";
 export const DialogSignIn = () => {
   return (
     <DialogWrapper>
-      <div class="sign-in__inputs">
+      <div className="sign-in__inputs">
         <form className="sign-in__inputs-form">
           <input
             id="sign-in-email"

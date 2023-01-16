@@ -5,13 +5,13 @@ import { DefaultLayout } from '../../layouts/DefaultLayout'
 
 export const UsersPage = () => {
   return (
-    <div>
+    <>
       <div className="header__radius"></div>
         <DefaultLayout>
             <UsersTable />
             <UsersPagination />
         </DefaultLayout>
-    </div>
+    </>
   )
 }
 
