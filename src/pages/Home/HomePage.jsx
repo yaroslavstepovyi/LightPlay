@@ -1,22 +1,21 @@
-import React from 'react'
-import { Hero } from "../../components/Hero";
-import { Experience } from "../../components/Experience";
-import { Video } from "../../components/Video";
-import { Comments } from "../../components/Comments";
-import { Values } from "../../components/Values";
+import React from "react";
+import { Hero } from "../../components/hero";
+import { Experience } from "../../components/experience";
+import { Video } from "../../components/video";
+import { Comments } from "../../components/comments";
+import { Values } from "../../components/values";
 import { DefaultLayout } from "../../layouts/DefaultLayout";
 
 export const HomePage = () => {
   return (
     <>
-        <div className="header__radius"></div>
-        <DefaultLayout>
-            <Hero />
-            <Experience />
-            <Video />
-            <Comments />
-            <Values />
-        </DefaultLayout>
+      <DefaultLayout>
+        <Hero />
+        <Experience />
+        <Video />
+        <Comments />
+        <Values />
+      </DefaultLayout>
     </>
-  )
-}
+  );
+};

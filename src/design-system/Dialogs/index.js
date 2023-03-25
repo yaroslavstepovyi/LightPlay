@@ -1,1 +1,1 @@
-export * from './DialogsCommon/DialogSignIn';
+export * from './dialogs-common/DialogSignIn';

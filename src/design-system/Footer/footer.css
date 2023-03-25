@@ -4,17 +4,17 @@ flex-direction: column;
 align-items: center;
 }
 
-.footer__radius-left {
+.footer-radius-left {
 position: absolute;
 width: 367px;
 height: 225px;
 left: 0;
 top: 1536px;
-/* background: url(../../Assets/icons/footer__radius-left.svg) no-repeat; */
+/* background: url(../../Assets/icons/footer-radius-left.svg) no-repeat; */
 z-index: -1;
 }
 
-.footer__wrap {
+.footer-wrap {
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -29,14 +29,14 @@ border-radius: 0px 7px 7px 0px;
 gap: 16px;
 }
 
-.footer__headline {
+.footer-headline {
 display: flex;
 flex-direction: column;
 align-items: center;
 margin-top: 67px;
 }
 
-.footer__headline h3 {
+.footer-headline h3 {
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -49,7 +49,7 @@ line-height: 39px;
 color: #ffffff;
 }
 
-.footer__headline p {
+.footer-headline p {
 width: 100%;
 max-width: 588px;
 margin-top: 0;
@@ -60,7 +60,7 @@ text-align: center;
 color: rgba(255, 255, 255, 0.85);
 }
 
-.footer__search {
+.footer-search {
 display: flex;
 align-items: center;
 margin-bottom: 68px;
@@ -69,7 +69,7 @@ max-width: 252px;
 gap: 12px;
 }
 
-.footer__search__enter-box {
+.footer-search__enter-box {
 max-width: 175px;
 height: 36px;
 padding-left: 8px;
@@ -84,11 +84,11 @@ border-radius: 8px 0px 0px 8px;
 border: none;
 }
 
-.footer__search__enter-box::placeholder {
+.footer-search__enter-box::placeholder {
 color: rgba(255, 255, 255, 0.56);
 }
 
-.footer__search__btn {
+.footer-search__btn {
 padding: 6px 12px;
 width: 100%;
 max-width: 65px;
@@ -112,8 +112,15 @@ cursor: pointer;
 color: var(--perfect-white);
 }
 
-.footer__search__btn:hover {
+.footer-search__btn:hover {
 background: linear-gradient(rgb(192, 51, 223), rgb(185, 53, 123));
+}
+
+.alert-message {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
 }
 
 @media (max-width: 1200px) {
@@ -126,11 +133,11 @@ background: linear-gradient(rgb(192, 51, 223), rgb(185, 53, 123));
 
 @media (max-width: 921px) {
     /* footer */
-    .footer__headline h3 {
+    .footer-headline h3 {
         font-size: 20px;
     }
 
-    .footer__headline p {
+    .footer-headline p {
         font-weight: 400;
         font-size: 13px;
         line-height: 11px;
@@ -141,7 +148,7 @@ background: linear-gradient(rgb(192, 51, 223), rgb(185, 53, 123));
 @media (max-width: 766px) {
     /* footer */
 
-    .footer__headline p {
+    .footer-headline p {
         font-weight: 400;
         font-size: 13px;
         line-height: 11px;
@@ -152,11 +159,11 @@ background: linear-gradient(rgb(192, 51, 223), rgb(185, 53, 123));
 @media (max-width: 576px) {
     /* footer */
 
-    .footer__radius-left {
+    .footer-radius-left {
         display: none;
     }
 
-    .footer__wrap {
+    .footer-wrap {
         padding-top: 10px;
         padding-bottom: 10px;
         background-image: url(/public/icons/footer-mobile.svg);
@@ -165,18 +172,18 @@ background: linear-gradient(rgb(192, 51, 223), rgb(185, 53, 123));
         gap: 10px;
     }
 
-    .footer__headline {
+    .footer-headline {
         width: 100%;
         margin-top: 10px;
     }
 
-    .footer__headline h3 {
+    .footer-headline h3 {
         font-weight: 700;
         font-size: 18px;
         line-height: 27px;
     }
 
-    .footer__headline p {
+    .footer-headline p {
         font-weight: 400;
         font-size: 10px;
         line-height: 11px;
@@ -184,7 +191,7 @@ background: linear-gradient(rgb(192, 51, 223), rgb(185, 53, 123));
         max-width: 253px;
     }
 
-    .footer__search {
+    .footer-search {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -192,7 +199,7 @@ background: linear-gradient(rgb(192, 51, 223), rgb(185, 53, 123));
         gap: 12px;
     }
 
-    .footer__search__enter-box {
+    .footer-search__enter-box {
         display: flex;
         padding: 16.5px 8px;
         width: 100%;
@@ -208,7 +215,7 @@ background: linear-gradient(rgb(192, 51, 223), rgb(185, 53, 123));
         border-radius: 8px 0px 0px 8px;
     }
 
-    .footer__search__btn {
+    .footer-search__btn {
         display: flex;
         width: 100%;
         height: 100%;
@@ -228,7 +235,7 @@ background: linear-gradient(rgb(192, 51, 223), rgb(185, 53, 123));
         border-radius: 0px 8px 8px 0px;
     }
 
-    .footer__headline p {
+    .footer-headline p {
         width: 100%;
         max-width: 253px;
     }
@@ -237,11 +244,11 @@ background: linear-gradient(rgb(192, 51, 223), rgb(185, 53, 123));
 @media (min-width: 390px) and (max-width: 450px) {
     /* footer */
 
-    .footer__radius-left {
+    .footer-radius-left {
         display: none;
     }
 
-    .footer__wrap {
+    .footer-wrap {
         padding-top: 10px;
         padding-bottom: 10px;
         background-image: url(/public/icons/footer-mobile.svg);
@@ -250,18 +257,18 @@ background: linear-gradient(rgb(192, 51, 223), rgb(185, 53, 123));
         gap: 10px;
     }
 
-    .footer__headline {
+    .footer-headline {
         width: 100%;
         margin-top: 10px;
     }
 
-    .footer__headline h3 {
+    .footer-headline h3 {
         font-weight: 700;
         font-size: 18px;
         line-height: 27px;
     }
 
-    .footer__headline p {
+    .footer-headline p {
         font-weight: 400;
         font-size: 10px;
         line-height: 11px;
@@ -269,7 +276,7 @@ background: linear-gradient(rgb(192, 51, 223), rgb(185, 53, 123));
         max-width: 253px;
     }
 
-    .footer__search {
+    .footer-search {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -277,7 +284,7 @@ background: linear-gradient(rgb(192, 51, 223), rgb(185, 53, 123));
         gap: 12px;
     }
 
-    .footer__search__enter-box {
+    .footer-search__enter-box {
         display: flex;
         padding: 16.5px 8px;
         width: 100%;
@@ -293,7 +300,7 @@ background: linear-gradient(rgb(192, 51, 223), rgb(185, 53, 123));
         border-radius: 8px 0px 0px 8px;
     }
 
-    .footer__search__btn {
+    .footer-search__btn {
         display: flex;
         width: 100%;
         height: 100%;
@@ -313,7 +320,7 @@ background: linear-gradient(rgb(192, 51, 223), rgb(185, 53, 123));
         border-radius: 0px 8px 8px 0px;
     }
 
-    .footer__headline p {
+    .footer-headline p {
         width: 100%;
         max-width: 253px;
     }

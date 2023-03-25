@@ -1,17 +1,15 @@
-import React from 'react'
-import { UsersTable } from '../../components/pages/UsersTable'
-import { UsersPagination } from '../../components/pages/UsersPagination'
-import { DefaultLayout } from '../../layouts/DefaultLayout'
+import React from "react";
+import { UsersTable } from "../../components/pages/UsersTable";
+import { UsersPagination } from "../../components/pages/UsersPagination";
+import { DefaultLayout } from "../../layouts/DefaultLayout";
 
 export const UsersPage = () => {
   return (
     <>
-      <div className="header__radius"></div>
-        <DefaultLayout>
-            <UsersTable />
-            <UsersPagination />
-        </DefaultLayout>
+      <DefaultLayout>
+        <UsersTable />
+        <UsersPagination />
+      </DefaultLayout>
     </>
-  )
-}
-
+  );
+};

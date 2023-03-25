@@ -1,12 +1,13 @@
 import React from 'react'
-import { Header } from "../design-system/Header"
-import { Footer  } from "../design-system/Footer"
+import { Header } from "../design-system/header"
+import { Footer  } from "../design-system/footer"
 
-export const DefaultLayout = ( {children} ) => {
+export const DefaultLayout = ({ children }) => {
   return (
     <>
       <Header />
-        <main>{children}</main>  
+        <div className="header-radius"></div>
+        <main>{ children }</main>  
       <Footer />  
     </>
   )
