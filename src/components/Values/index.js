@@ -1,1 +1,5 @@
-export * from './Values'
+import {Values} from './Values'
+
+export {
+    Values
+}

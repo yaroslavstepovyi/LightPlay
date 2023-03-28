@@ -256,7 +256,7 @@
     width: 254%;
   }
 
-  ::-webkit-scrollbar {
+  /* ::-webkit-scrollbar {
     width: 4px;
     height: 8px;
     background: #c993d4;
@@ -266,7 +266,7 @@
   ::-webkit-scrollbar-thumb {
     border-radius: 4px;
     background: rgba(188, 60, 216, 1);
-  }
+  } */
 }
 
 @media (max-width: 766px) {
@@ -326,7 +326,7 @@
     width: 254%;
   }
 
-  ::-webkit-scrollbar {
+  /* ::-webkit-scrollbar {
     height: 8px;
     background: #c993d4;
     border-radius: 4px;
@@ -335,7 +335,7 @@
   ::-webkit-scrollbar-thumb {
     border-radius: 4px;
     background: rgba(188, 60, 216, 1);
-  }
+  } */
 }
 
 @media (max-width: 576px) {
@@ -400,7 +400,7 @@
   .users__datas-table {
     width: 254%;
   }
-
+/* 
   ::-webkit-scrollbar {
     height: 8px;
     background: #c993d4;
@@ -410,5 +410,5 @@
   ::-webkit-scrollbar-thumb {
     border-radius: 4px;
     background: rgba(188, 60, 216, 1);
-  }
+  } */
 }

@@ -11,7 +11,8 @@ import { DialogSignIn } from "../Dialogs";
 import { NavigationLinks } from "../../routers";
 import useHeaderState from "./headerState";
 
-const DesktopHeader = ({
+const DesktopHeader = ({ 
+  state,
   isDialogVisible,
   NavigationLinks,
   onHandleOpenDialogSignIn,
@@ -31,10 +32,7 @@ const DesktopHeader = ({
               {NavigationLinks.map((link, idx) => (
                 <li
                   key={idx}
-                  className={`header-link ${
-                    link.isActive ? "nav-bar-active" : null
-                  }`}
-                >
+                  className={`header-link ${ link.isActive ? "nav-bar-active" : null }`}>
                   <NavLink to={link.path}>{link.label}</NavLink>
                 </li>
               ))}
@@ -43,13 +41,12 @@ const DesktopHeader = ({
           <button
             type="submit"
             className="header-nav-btn"
-            onClick={onHandleOpenDialogSignIn}
-          >
+            onClick={onHandleOpenDialogSignIn}>
             Sign In
           </button>
         </div>
 
-        {isDialogVisible && (
+        {state.isDialogVisible && (
           <div
             className="background-blur"
             onClick={onHandleBackroundBlurHide}></div>
@@ -73,10 +70,7 @@ const MobileHeader = ({ NavigationLinks, state, onHandleBurgerMenuToggle }) => {
               NavigationLinks.map((link, idx) => (
                 <li
                   key={idx}
-                  className={`header-link ${
-                    link.isActive ? "nav-bar-active" : null
-                  }`
-            }>
+                  className={`header-link ${ link.isActive ? "nav-bar-active" : null}`}>
                 <NavLink to={link.path}>{link.label}</NavLink>
               </li>
             ))}
@@ -101,25 +95,18 @@ const Header = (props) => {
     onHandleBurgerMenuToggle,
   } = useHeaderState();
 
+  const commonProps = {
+    state,
+    NavigationLinks,
+    onHandleOpenDialogSignIn,
+    onHandleBackroundBlurHide,
+    onHandleBurgerMenuToggle,
+  }
+
   return (
     <>
-      <DesktopHeader
-        state={state}
-        scroll={scroll}
-        NavigationLinks={NavigationLinks}
-        onHandleOpenDialogSignIn={onHandleOpenDialogSignIn}
-        onHandleBackroundBlurHide={onHandleBackroundBlurHide}
-        onHandleBurgerMenuToggle={onHandleBurgerMenuToggle}
-      />
-
-      <MobileHeader
-        state={state}
-        NavigationLinks={NavigationLinks}
-        onHandleOpenDialogSignIn={onHandleOpenDialogSignIn}
-        onHandleBackroundBlurHide={onHandleBackroundBlurHide}
-        onHandleBurgerMenuToggle={onHandleBurgerMenuToggle}
-      />
-
+      <DesktopHeader {...commonProps} scroll={scroll}/>
+      <MobileHeader {...commonProps} />
       {state.isDialogVisible && <DialogSignIn />}
     </>
   );

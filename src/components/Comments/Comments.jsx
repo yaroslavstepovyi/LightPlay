@@ -5,7 +5,6 @@ import { COMMENTS } from "../../mocks/comments.mock";
 export const Comments = () => {
   return (
     <section className="comments">
-      {/* <div className="comments-radius-center"></div> */}
       <div className="comments-radius-left"></div>
       <div className="comments-wrap">
         <h3 className="comments-headline-head">What our clients say</h3>

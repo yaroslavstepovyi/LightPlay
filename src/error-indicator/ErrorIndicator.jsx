@@ -4,8 +4,8 @@ import "./error-indicator.css";
 
 const ErrorIndicator = () => {
     return (
-      <div>
-        <p>Oops, something has gone wrong!</p>
+      <div className="error-indicator">
+        <p>Ooops, something has gone wrong...</p>
       </div>
     );
   };

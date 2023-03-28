@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-import { ErrorIndicator } from '../components/error-indicator';
+import { ErrorIndicator } from '../error-indicator';
 
 const ErrorBoundary = ({children}) => {
     const [hasError, setHasError] = useState(false);
@@ -10,7 +10,7 @@ const ErrorBoundary = ({children}) => {
             setHasError(true);
         }
 
-        window.addEventListener('error', handleError)
+        window.addEventListener('error', handleError);
 
         return () => {
             window.removeEventListener('error', handleError);

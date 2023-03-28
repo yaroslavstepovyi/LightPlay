@@ -3,8 +3,8 @@ import { Hero } from "../../components/hero";
 import { Experience } from "../../components/experience";
 import { Video } from "../../components/video";
 import { Comments } from "../../components/comments";
-import { Values } from "../../components/values";
 import { DefaultLayout } from "../../layouts/DefaultLayout";
+import { Values } from "../../components/values";
 
 export const HomePage = () => {
   return (

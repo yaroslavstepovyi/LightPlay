@@ -1,0 +1,15 @@
+.error-indicator {
+    background-color: #1e1e1e;
+    border: 1px solid #bc3cd8;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: center;
+}
+
+.error-indicator p{
+    font-family: 'Gill Sans MT';
+    font-size: 25px;
+    color: #bc3cd8;
+}

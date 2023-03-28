@@ -1,1 +1,5 @@
-export * from './Video'
+import { Video } from './Video'
+
+export { 
+    Video
+}

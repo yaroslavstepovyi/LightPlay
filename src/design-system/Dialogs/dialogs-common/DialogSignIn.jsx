@@ -3,14 +3,21 @@ import "./dialog.css";
 import { DialogWrapper } from "./DialogWrapper";
 
 export const DialogSignIn = () => {
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    const email = document.getElementById('sign-in-email').value;
+    const password = document.getElementById('sign-in-password').value;
+  }
+
   return (
     <DialogWrapper>
       <div className="sign-in__inputs">
-        <form className="sign-in__inputs-form">
+        <form className="sign-in__inputs-form" onSubmit={handleSubmit}>
           <input
             id="sign-in-email"
             className="sign-in__form-inpt"
             type="email"
+            required
             placeholder="Email"
           />
           <input
@@ -20,10 +27,10 @@ export const DialogSignIn = () => {
             required
             placeholder="Password"
           />
+          <button type="submit" className="sign-in__form-btn">
+            Sign In
+          </button>
         </form>
-        <button type="submit" className="sign-in__form-btn">
-          Sign In
-        </button>
       </div>
     </DialogWrapper>
   );

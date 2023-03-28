@@ -9,13 +9,15 @@ export const Footer = () => {
   const [emailValue, setEmailValue] = useState("");
   const [showAlert, setShowAlert] = useState(false);
 
-  const alertMessage = document.getElementById('success-message');
-
   const form = useRef();
   const message_text = _WELLCOME_MESSAGE;
 
   function onHandleInputChange(e) {
     setEmailValue(e.target.value);
+
+    if(e.key === 'Enter'){
+      sendEmail(e)
+    }
   }
 
   const sendEmail = (e) => {
@@ -30,9 +32,7 @@ export const Footer = () => {
 
     emailjs
       .sendForm( serviceId, templateId, form.current, userId, formData, { to_email: userEmail })
-      .then(
-        (result) => {
-          console.log(result.text);
+      .then(() => {
           setShowAlert(true);
           setTimeout(() =>{
             setShowAlert(false);
@@ -46,12 +46,12 @@ export const Footer = () => {
 
   return (
     <footer className="footer">
-      <div className="footer-wrap">
       {showAlert && (
           <div className="alert-message" id="success-message">
             Your message has been sent successfully!
           </div>
       )}
+      <div className="footer-wrap">
         <div className="footer-headline">
           <h3>Explore product in new way</h3>
           <p>
@@ -72,7 +72,7 @@ export const Footer = () => {
               className="footer-search__btn"
               type="submit"
               onClick={sendEmail}>
-              Start
+              Send
             </button>
           </div>
           <input type="hidden" name="message" value={message_text} />
