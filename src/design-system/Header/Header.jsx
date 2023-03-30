@@ -13,7 +13,6 @@ import useHeaderState from "./headerState";
 
 const DesktopHeader = ({ 
   state,
-  isDialogVisible,
   NavigationLinks,
   onHandleOpenDialogSignIn,
   onHandleBackroundBlurHide,

@@ -111,6 +111,10 @@
     backdrop-filter: blur(2px);
     z-index: 50;
   }
+
+.invalid-email-password {
+  color: red;
+}
   
   @media (max-width: 921px) {
  
