@@ -1,32 +1,36 @@
+import user1 from '../assets/images/users/user1.svg'
+import user2 from '../assets/images/users/user2.svg'
+import user3 from '../assets/images/users/user3.svg'
+
 export const USERS_DATA = [
 {
     id: "1",
-    img: "users-page-users-icon",
     name: "Abe Fukuda",
     country: "Japan",
     age: "28",
     email: "test@test.com",
     password: "testtest",
+    img: user1,
     role: "moderator",
 },
 {
     id: "2",
-    img: "userOnline1",
     name: "Aki Fukumoto",
     country: "China",
     age: "23",
     email: "chinathebest@gmail.com",
     password: "123123",
+    img: user2,
     role: "admin",
 },
 {
     id: "3",
-    img: "userOnline2",
     name: "Hayao Miyazaki",
     country: "Japan",
     age: "69",
     email: "hayao23123@gmail.com",
     password: "123123",
+    img: user3,
     role: "user",
 },
 ]

@@ -15,11 +15,9 @@
 .sign-in__wrap {
   position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 100%;
   max-width: 560px;
-  gap: 14px;
+  gap: 4px;
 }
 
 .sign-in__headline {
@@ -28,10 +26,13 @@
   height: 64px;
   background: rgba(83, 70, 134, 1);
   border: 0px solid transparent;
-  border-radius: 0px 64px 0px 0px;
+  border-radius: 0px 10px 0px 0px;
 }
 
 .sign-in__headline h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
@@ -40,6 +41,7 @@
   padding-top: 16px;
   padding-bottom: 16px;
   padding-left: 16px;
+  padding-right: 10px;
   color: #fff;
 }
 
@@ -102,104 +104,134 @@
 }
 
 .background-blur {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(95, 95, 95, 0.6);
-    backdrop-filter: blur(2px);
-    z-index: 50;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(50, 50, 50, 0.6);
+  backdrop-filter: blur(0.5px);
+  z-index: 99;
+}
 
 .invalid-email-password {
   color: red;
 }
-  
-  @media (max-width: 921px) {
- 
-    /* sign in */
-  
-    .sign-in {
-      max-width: 408px;
-    }
-  
-    .sign-in__wrap {
-      gap: 14px;
-    }
-  
-    .sign-in__wrap form {
-      margin-bottom: 16px;
-      gap: 16px;
-    }
-  
-    .sign-in__headline h3 {
-      padding-top: 16px;
-      padding-bottom: 16px;
-      padding-left: 16px;
-      font-weight: 600;
-      font-size: 18px;
-      line-height: 27px;
-    }
-  
-    .sign-in__form-inpt {
-      width: 372px;
-      height: 31px;
-      padding-top: 18px;
-      padding-bottom: 18px;
-      font-size: 17px;
-    }
-  
-    .sign-in__form-btn {
-      padding: 6px 12px;
-      font-weight: 700;
-      font-size: 13px;
-      line-height: 21px;
-      width: 100%;
-      max-width: 71px;
-      max-height: 36px;
-    }
+.sign-in-close {
+  position: relative;
+  height: 40px;
+  width: 40px;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  background-color: #bc3cd8;
+  transition: all 0.5s ease-out;
+}
+
+.sign-in-close:hover {
+  color: #f2f2f2;
+  background-color: #ce4dd5;
+  cursor: pointer;
+  transform: rotate(180deg);
+}
+
+.sign-in-close::before {
+  content: "X";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffff;
+  transition: all 0.1s ease-out;
+}
+
+.sign-in-close:hover::before {
+  transform: translate(-50%, -50%) scale(2);
+}
+
+@media (max-width: 921px) {
+  /* sign in */
+
+  .sign-in {
+    max-width: 408px;
   }
-  
-  @media (min-width: 390px) and (max-width: 450px) {
-    /* sign in */
-  
-    .sign-in {
-      max-width: 348px;
-    }
-  
-    .sign-in__wrap {
-      gap: 14px;
-    }
-  
-    .sign-in__wrap form {
-      margin-bottom: 16px;
-      gap: 16px;
-    }
-  
-    .sign-in__headline h3 {
-      padding-top: 16px;
-      padding-bottom: 16px;
-      padding-left: 16px;
-      font-weight: 600;
-      font-size: 18px;
-      line-height: 27px;
-    }
-  
-    .sign-in__form-inpt {
-      width: 312px;
-      height: 31px;
-      padding-top: 18px;
-      padding-bottom: 18px;
-    }
-  
-    .sign-in__form-btn {
-      padding: 6px 12px;
-      font-weight: 700;
-      font-size: 13px;
-      line-height: 21px;
-      width: 100%;
-      max-width: 71px;
-      max-height: 33px;
-    }
+
+  .sign-in__wrap {
+    gap: 14px;
   }
+
+  .sign-in__wrap form {
+    margin-bottom: 16px;
+    gap: 16px;
+  }
+
+  .sign-in__headline h3 {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 16px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+  }
+
+  .sign-in__form-inpt {
+    width: 372px;
+    height: 31px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    font-size: 17px;
+  }
+
+  .sign-in__form-btn {
+    padding: 6px 12px;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 21px;
+    width: 100%;
+    max-width: 71px;
+    max-height: 36px;
+  }
+}
+
+@media (min-width: 390px) and (max-width: 450px) {
+  /* sign in */
+
+  .sign-in {
+    max-width: 348px;
+  }
+
+  .sign-in__wrap {
+    gap: 14px;
+  }
+
+  .sign-in__wrap form {
+    margin-bottom: 16px;
+    gap: 16px;
+  }
+
+  .sign-in__headline h3 {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 16px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+  }
+
+  .sign-in__form-inpt {
+    width: 312px;
+    height: 31px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+
+  .sign-in__form-btn {
+    padding: 6px 12px;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 21px;
+    width: 100%;
+    max-width: 71px;
+    max-height: 33px;
+  }
+}

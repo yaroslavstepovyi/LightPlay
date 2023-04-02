@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CryptoJS from "crypto-js";
 
 import "./dialog.css";
@@ -6,13 +6,14 @@ import "./dialog.css";
 import { DialogWrapper } from "./DialogWrapper";
 import { getAllUsers } from "../../../services";
 
-export const DialogSignIn = () => {
+
+export const DialogSignIn = ({ onHandleBackgroundBlurHide }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loggedInUsers, setLoggedInUser] = useState(null);
   const [error, setError] = useState("");
   const [isloggedIn, setIsLoggedIn] = useState(false);
-  const [isBlurHidden, setIsBlurHidden] = useState(true);
+
 
   const handleLogIn = (e) => {
     e.preventDefault();
@@ -25,7 +26,7 @@ export const DialogSignIn = () => {
 
         if (matchedUsers.length > 0) {
           const userObject = matchedUsers[0];
-          const encryptedUser = CryptoJS.AES.encrypt(
+          const encryptedUser = CryptoJS.AES.encrypt( //encrypting "user" in localStorage 
             JSON.stringify(userObject),
             "secret key"
           ).toString();
@@ -38,23 +39,18 @@ export const DialogSignIn = () => {
           setEmail("");
           setError("");
           setIsLoggedIn(true);
+          onHandleBackgroundBlurHide(false)
         } else {
           setError(new Error("Invalid Email or Password"));
         }
       })
       .catch((err) => setError(new Error("Error fetching user")));
   };
-
-  const handleCloseBlur = () => {
-    setIsBlurHidden(!isBlurHidden);
-  };
-
-
-
+  
   return (
     <>
       {!isloggedIn && (
-        <DialogWrapper>
+        <DialogWrapper onHandleBackgroundBlurHide={onHandleBackgroundBlurHide}>
           <div className="sign-in__inputs">
             <form className="sign-in__inputs-form" onSubmit={handleLogIn}>
               <input
@@ -73,9 +69,10 @@ export const DialogSignIn = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <button type="submit" className="sign-in__form-btn" onClick={handleCloseBlur}>
+              <button type="submit" className="sign-in__form-btn">
                 Sign In
-              </button>
+              </button> 
+              
               {error && (
                 <p className="invalid-email-password">{error.toString()}</p>
               )}
@@ -83,7 +80,6 @@ export const DialogSignIn = () => {
           </div>
         </DialogWrapper>
       )}
-      {!isloggedIn && <div className="background-blur"></div>}
     </>
   );
 };
