@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import CryptoJS from "crypto-js";
+import React, { useState } from "react";
 
 import "./dialog.css";
 
 import { DialogWrapper } from "./DialogWrapper";
 import { getAllUsers } from "../../../services";
+import { encryptUser } from "../../../utils/encryption-user";
 
 
 export const DialogSignIn = ({ onHandleBackgroundBlurHide }) => {
@@ -26,14 +26,11 @@ export const DialogSignIn = ({ onHandleBackgroundBlurHide }) => {
 
         if (matchedUsers.length > 0) {
           const userObject = matchedUsers[0];
-          const encryptedUser = CryptoJS.AES.encrypt( //encrypting "user" in localStorage 
-            JSON.stringify(userObject),
-            "secret key"
-          ).toString();
+          encryptUser(userObject)
 
           setLoggedInUser(userObject);
 
-          localStorage.setItem("user", JSON.stringify(encryptedUser));
+          localStorage.setItem("user", JSON.stringify(encryptUser(userObject)));
 
           setPassword("");
           setEmail("");

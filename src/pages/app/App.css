@@ -78,12 +78,10 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background-color: #bc3cd8; 
-  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: #c123e5; 
-  border-radius: 4px;
 }
 
 @media (max-width: 576px) {

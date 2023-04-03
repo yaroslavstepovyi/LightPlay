@@ -7,6 +7,8 @@ const useAuth = () => {
     isBurgerMenuActive: false,
   });
 
+  const [isOpenDropdownMenu, setIsOpenDropdownMenu] = useState(false);
+
   const onHandleOpenDialogSignIn = () => {
     setState((prevState) => ({
       ...prevState,
@@ -21,6 +23,10 @@ const useAuth = () => {
     }));
   };
 
+  const UserIcon = () => {
+    setIsOpenDropdownMenu(!isOpenDropdownMenu);
+  };
+
   const onHandleBurgerMenuToggle = () => {
     setState((prevState) => ({
       ...prevState,
@@ -30,9 +36,11 @@ const useAuth = () => {
 
   return {
     state,
+    isOpenDropdownMenu,
     onHandleOpenDialogSignIn,
     onHandleBackgroundBlurHide,
     onHandleBurgerMenuToggle,
+    UserIcon,
   };
 };
 

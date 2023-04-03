@@ -2,14 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
-import CryptoJS from "crypto-js";
-
 import "./header.css";
 
 import { Logo } from "../../components/images";
 import { DialogSignIn } from "../Dialogs";
+import { DropdownUserMenu } from "../Dialogs/dialogs-common/dialog-dropdown-menu";
 import { NavigationLinks } from "../../routers";
 import { useAuth } from "../../hooks";
+import { decryptUser } from "../../utils/encryption-user";
+
 import withScroll from "../../hoc-helpers/withScroll";
 
 const Header = ({ scroll }) => {
@@ -18,6 +19,8 @@ const Header = ({ scroll }) => {
     onHandleOpenDialogSignIn,
     onHandleBackgroundBlurHide,
     onHandleBurgerMenuToggle,
+    isOpenDropdownMenu,
+    UserIcon,
   } = useAuth();
 
   const commonProps = {
@@ -26,26 +29,15 @@ const Header = ({ scroll }) => {
     onHandleOpenDialogSignIn,
     onHandleBackgroundBlurHide,
     onHandleBurgerMenuToggle,
+    isOpenDropdownMenu,
+    UserIcon
   };
-  
-  const encryptedUser = JSON.parse(localStorage.getItem("user")); //decryption of "user" from localStorage:
-  let decryptedUser = null;
-
-  if (encryptedUser) {
-    const decrypted = CryptoJS.AES.decrypt(encryptedUser, "secret key"); //encryptedUser not a string;
-    try {
-      decryptedUser = JSON.parse(decrypted.toString(CryptoJS.enc.Utf8));
-    } catch (e) {
-      console.error("Error parsing decrypted user object", e);
-    }
-  }
 
   return (
     <>
       <DesktopHeader
         {...commonProps}
         scroll={scroll}
-        decryptedUser={decryptedUser}
       />
       <MobileHeader {...commonProps} />
       {state.isDialogVisible && (
@@ -60,8 +52,9 @@ const DesktopHeader = ({
   NavigationLinks,
   onHandleOpenDialogSignIn,
   onHandleBurgerMenuToggle,
+  isOpenDropdownMenu,
+  UserIcon,
   scroll,
-  decryptedUser,
 }) => {
   return (
     <>
@@ -77,32 +70,36 @@ const DesktopHeader = ({
                   key={idx}
                   className={`header-link ${
                     link.isActive ? "nav-bar-active" : null
-                  }`}
-                >
+                  }`}>
                   <NavLink to={link.path}>{link.label}</NavLink>
                 </li>
               ))}
             </ul>
           </div>
-          {localStorage.getItem("user") ? (
-            <img src={decryptedUser.img} alt="user icon" />
-          ) : (
-            <button
-              type="submit"
-              className="header-nav-btn"
-              onClick={onHandleOpenDialogSignIn}
-            >
-              Sign In
-            </button>
-          )}
+          <div>
+            {localStorage.getItem("user") ? (
+              <>
+                <img src={decryptUser().img} alt="user icon" onClick={UserIcon}/>
+                {isOpenDropdownMenu && <div className="background-blur-transparent" onClick={UserIcon}></div>}
+                {isOpenDropdownMenu && <DropdownUserMenu />}
+              </>
+            ) : (
+              <button
+                type="submit"
+                className="header-nav-btn"
+                onClick={onHandleOpenDialogSignIn}>
+                Sign In
+              </button>
+            )}
+          </div>
         </div>
 
         {state.isDialogVisible && <div className="background-blur"></div>}
 
         <button
           className="header-nav-small"
-          onClick={onHandleBurgerMenuToggle}
-        ></button>
+          onClick={onHandleBurgerMenuToggle}>
+        </button>
       </header>
     </>
   );
@@ -136,4 +133,4 @@ const MobileHeader = ({ NavigationLinks, state, onHandleBurgerMenuToggle }) => {
   );
 };
 
-export default withScroll(Header, 22);
+export default withScroll(Header, 0);
