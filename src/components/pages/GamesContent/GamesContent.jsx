@@ -1,46 +1,113 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
+
 import "./gamesContent.css";
 
+import { AuthContext } from "../../../contexts/authUser";
+import { useAuth } from "../../../hooks";
+import { DialogSignIn } from "../../../design-system/Dialogs";
+import getDeafultGames from "../../../services/defaultGames";
+import { decryptUser } from "../../../utils/encryption-user";
+import DialogGamesCard from "../GamesCard/DialogGamesCard";
+import { GamesContext } from "../../../contexts/gamesList";
+import { GamesPaginationContext } from "../../../contexts/gamesPagination";
+
 export const GamesContent = () => {
+  const { isloggedIn } = useContext(AuthContext);
+  const [showGamesCard, setShowGamesCard] = useState(false);
+  const { games, setGames } = useContext(GamesContext);
+  const user = decryptUser(localStorage.getItem("user"), "secret key");
+  const [selectedGame, setSelectedGame] = useState(null);
+  const { onHandleOpenDialogSignIn, onHandleBackgroundBlurHide, state } =
+    useAuth();
+  const { getPaginatedGames } = useContext(GamesPaginationContext);
+
+  useEffect(() => {
+    getDeafultGames().then(() => {
+      const savedGames = JSON.parse(localStorage.getItem("games"));
+      if (savedGames) {
+        setGames(savedGames);
+      }
+    });
+  }, [setGames]);
+
+  const handleGamesCard = (game) => {
+    setSelectedGame(game);
+    setShowGamesCard(true);
+  };
+
   return (
-    <section className="content">
-      <ul className="content__grid__list"></ul>
-      <div className="background-blur hidden-background-blur"></div>
-      <div className="game-dialog modal hidden">
-        <div className="game-dialog__container">
-          <img
-            className="game-dialog__img"
-            src="../../Assets/images/Games/battlefield.png"
-            alt=""
-          />
-          <div className="game-dialog__content">
-            <div className="content__main">
-              <h3 className="game-dialog__game-name">game-name</h3>
-              <p className="game-dialog__game-description">game-description</p>
+    <>
+      {isloggedIn ? (
+        <section className="content">
+          <ul className="content__grid__list">
+            <div className="content__div-item">
+              {getPaginatedGames().map((game) => (
+                <li
+                  className="content__grid-item"
+                  key={game.id}
+                  onClick={() => handleGamesCard(game)}
+                >
+                  <img
+                    className="content__grid-item-img resize-photo"
+                    src={game.img}
+                    alt={game.name}
+                  />
+                  <div className="content__grid-item-description">
+                    <div className="content__grid-item-description-left">
+                      <h3 className="game-name">{game.name}</h3>
+                      <span className="game-description">
+                        {game.description}
+                      </span>
+                    </div>
+                    <div className="content__grid-item-description-right">
+                      <h3 className="user-name">{user.name}</h3>
+                      <span className="user-review">{game.review}</span>
+                    </div>
+                  </div>
+                </li>
+              ))}
             </div>
-            <div className="content__review">
-              <div className="content__review-user">
-                <img src="../../Assets/icons/DialogUsernameImg.svg" alt="" />
-                <div className="content__review-name">
-                  <p className="game-dialog__user-name">user-name</p>
-                  <h3 className="game-dialog__user-review">user-review</h3>
-                </div>
-              </div>
+          </ul>
+        </section>
+      ) : (
+        <section className="content">
+          <div className="content__empty-games">
+            <div className="content__empty-games-wrap">
+              <h1>Empty Games</h1>
+              <p>
+                <button
+                  className="content__empty-games__sign-in-btn"
+                  onClick={onHandleOpenDialogSignIn}
+                >
+                  Sign in
+                </button>
+                for adding games
+              </p>
             </div>
           </div>
-        </div>
-      </div>
-      <div className="content__empty-games">
-        <div className="content__empty-games-wrap">
-          <h1>Empty Games</h1>
-          <p>
-            <button className="content__empty-games__sign-in-btn">
-              Sign in
-            </button>
-            for adding games
-          </p>
-        </div>
-      </div>
-    </section>
+        </section>
+      )}
+      {state.isDialogVisible && (
+        <>
+          <DialogSignIn
+            onHandleBackgroundBlurHide={onHandleBackgroundBlurHide}
+          />
+          <div className="background-blur"></div>
+        </>
+      )}
+      {showGamesCard && (
+        <>
+          <div
+            className="background-blur"
+            onClick={() => setShowGamesCard(false)}
+          ></div>
+          <DialogGamesCard
+            selectedGame={selectedGame}
+            user={user}
+            setShowGamesCard={setShowGamesCard}
+          />
+        </>
+      )}
+    </>
   );
 };

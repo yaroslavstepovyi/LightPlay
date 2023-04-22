@@ -7,17 +7,20 @@ import { HomePage } from "../home";
 import { GamesPage } from "../games";
 import { UsersPage } from "../users";
 import { ErrorBoundary } from "../../hoc-helpers";
+import { AuthProvider } from "../../contexts/authUser";
 
 export const App = () => {
   return (
     <ErrorBoundary>
-      <section className="container">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/games" element={<GamesPage />} />
-          <Route path="/users" element={<UsersPage />} />
-        </Routes>
-      </section>
+      <AuthProvider>
+        <section className="container">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/games" element={<GamesPage />} />
+            <Route path="/users" element={<UsersPage />} />
+          </Routes>
+        </section>
+      </AuthProvider>
     </ErrorBoundary>
   );
 };

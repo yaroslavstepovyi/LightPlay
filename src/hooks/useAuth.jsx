@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+
 const useAuth = () => {
   const [state, setState] = useState({
     isDialogVisible: false,
@@ -23,7 +24,7 @@ const useAuth = () => {
     }));
   };
 
-  const UserIcon = () => {
+  const onHandleUserIcon = () => {
     setIsOpenDropdownMenu(!isOpenDropdownMenu);
   };
 
@@ -40,7 +41,7 @@ const useAuth = () => {
     onHandleOpenDialogSignIn,
     onHandleBackgroundBlurHide,
     onHandleBurgerMenuToggle,
-    UserIcon,
+    onHandleUserIcon,
   };
 };
 

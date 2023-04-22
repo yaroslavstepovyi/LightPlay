@@ -19,8 +19,8 @@ const Header = ({ scroll }) => {
     onHandleOpenDialogSignIn,
     onHandleBackgroundBlurHide,
     onHandleBurgerMenuToggle,
+    onHandleUserIcon,
     isOpenDropdownMenu,
-    UserIcon,
   } = useAuth();
 
   const commonProps = {
@@ -29,19 +29,19 @@ const Header = ({ scroll }) => {
     onHandleOpenDialogSignIn,
     onHandleBackgroundBlurHide,
     onHandleBurgerMenuToggle,
+    onHandleUserIcon,
     isOpenDropdownMenu,
-    UserIcon
   };
 
   return (
     <>
-      <DesktopHeader
-        {...commonProps}
-        scroll={scroll}
-      />
+      <DesktopHeader {...commonProps} scroll={scroll} />
       <MobileHeader {...commonProps} />
       {state.isDialogVisible && (
-        <DialogSignIn onHandleBackgroundBlurHide={onHandleBackgroundBlurHide} />
+        <>
+          <DialogSignIn onHandleBackgroundBlurHide={onHandleBackgroundBlurHide} />
+          <div className="background-blur"></div>
+        </>
       )}
     </>
   );
@@ -52,8 +52,9 @@ const DesktopHeader = ({
   NavigationLinks,
   onHandleOpenDialogSignIn,
   onHandleBurgerMenuToggle,
+  onHandleBackgroundBlurHide,
+  onHandleUserIcon,
   isOpenDropdownMenu,
-  UserIcon,
   scroll,
 }) => {
   return (
@@ -70,7 +71,8 @@ const DesktopHeader = ({
                   key={idx}
                   className={`header-link ${
                     link.isActive ? "nav-bar-active" : null
-                  }`}>
+                  }`}
+                >
                   <NavLink to={link.path}>{link.label}</NavLink>
                 </li>
               ))}
@@ -79,33 +81,51 @@ const DesktopHeader = ({
           <div>
             {localStorage.getItem("user") ? (
               <>
-                <img src={decryptUser().img} alt="user icon" onClick={UserIcon}/>
-                {isOpenDropdownMenu && <div className="background-blur-transparent" onClick={UserIcon}></div>}
-                {isOpenDropdownMenu && <DropdownUserMenu />}
+                <img
+                  src={decryptUser().img}
+                  alt="user icon"
+                  onClick={onHandleUserIcon}
+                />
+                {isOpenDropdownMenu && (
+                  <div
+                    className="background-blur-transparent"
+                    onClick={onHandleUserIcon}
+                  ></div>
+                )}
+                {isOpenDropdownMenu && (
+                  <DropdownUserMenu
+                    onHandleBackgroundBlurHide={onHandleBackgroundBlurHide}
+                    onHandleUserIcon={onHandleUserIcon}
+                  />
+                )}
               </>
             ) : (
               <button
                 type="submit"
                 className="header-nav-btn"
-                onClick={onHandleOpenDialogSignIn}>
+                onClick={onHandleOpenDialogSignIn}
+              >
                 Sign In
               </button>
             )}
           </div>
         </div>
 
-        {state.isDialogVisible && <div className="background-blur"></div>}
-
         <button
           className="header-nav-small"
-          onClick={onHandleBurgerMenuToggle}>
-        </button>
+          onClick={onHandleBurgerMenuToggle}
+        ></button>
       </header>
     </>
   );
 };
 
-const MobileHeader = ({ NavigationLinks, state, onHandleBurgerMenuToggle }) => {
+const MobileHeader = ({
+  NavigationLinks,
+  state,
+  onHandleBurgerMenuToggle,
+  onHandleOpenDialogSignIn,
+}) => {
   return (
     <>
       {state.isBurgerMenuActive && (
@@ -122,7 +142,11 @@ const MobileHeader = ({ NavigationLinks, state, onHandleBurgerMenuToggle }) => {
               </li>
             ))}
             <li>
-              <button type="submit" className="header-nav-btn-mobile">
+              <button
+                type="submit"
+                className="header-nav-btn-mobile"
+                onClick={onHandleOpenDialogSignIn}
+              >
                 Sign In
               </button>
             </li>

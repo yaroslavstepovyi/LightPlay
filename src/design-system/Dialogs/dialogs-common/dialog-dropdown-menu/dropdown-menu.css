@@ -24,9 +24,19 @@
 .dropdown-menu li {
   margin: 0;
   padding: 0;
+  cursor: pointer;
 }
 
 .dropdown-menu a {
+  display: block;
+  text-decoration: none;
+  padding: 8px 7px;
+  font-family: Poppins;
+  color: #ffffffbb;
+  border-radius: 4px;
+}
+
+.log-out {
   display: block;
   text-decoration: none;
   padding: 8px 7px;
@@ -49,7 +59,7 @@
   z-index: 999;
 }
 
-.dropdown-menu li:last-child a:hover {
+.dropdown-menu li:last-child .log-out:hover {
   background-color: #d871ef;
   color: #ffff;
   border-radius: 0 0 4px 4px;
@@ -62,8 +72,8 @@
 
 .triangle {
   position: absolute;
-  top: -7.5px;
-  right: 5.5px;
+  top: -5.5px;
+  right: 1.5px;
   border-bottom: 15px solid #bc3cd8;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;

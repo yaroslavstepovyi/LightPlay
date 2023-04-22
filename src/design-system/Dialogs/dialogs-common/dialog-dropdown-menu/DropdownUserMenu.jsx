@@ -1,11 +1,21 @@
-import React from "react";
-
-import './dropdown-menu.css'
+import React, { useContext } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faCog, faQuestionCircle, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
-const DropdownUserMenu = () => {
+import './dropdown-menu.css'
+
+import { AuthContext } from "../../../../contexts/authUser";
+
+const DropdownUserMenu = ({onHandleBackgroundBlurHide, onHandleUserIcon}) => {
+  const { isloggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const handleLogOut = () => {
+    localStorage.removeItem("user");
+    onHandleBackgroundBlurHide(false);
+    setIsLoggedIn(false);
+    onHandleUserIcon();
+  }
+
   return (
     <div className="dropdown-menu">
       <div className="triangle"></div>
@@ -29,10 +39,10 @@ const DropdownUserMenu = () => {
           </a>
         </li>
         <li>
-          <a href="#3">
+          <div className="log-out" onClick={handleLogOut}>
             <FontAwesomeIcon className="font-awesome" icon={faSignOutAlt} />
             <span>Log Out</span>
-          </a>
+          </div>
         </li>
       </ul>
     </div>

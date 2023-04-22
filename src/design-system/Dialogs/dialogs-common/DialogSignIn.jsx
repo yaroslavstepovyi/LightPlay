@@ -1,19 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import "./dialog.css";
 
 import { DialogWrapper } from "./DialogWrapper";
 import { getAllUsers } from "../../../services";
 import { encryptUser } from "../../../utils/encryption-user";
+import { AuthContext } from "../../../contexts/authUser";
 
 
 export const DialogSignIn = ({ onHandleBackgroundBlurHide }) => {
+  const { isloggedIn, setIsLoggedIn } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loggedInUsers, setLoggedInUser] = useState(null);
   const [error, setError] = useState("");
-  const [isloggedIn, setIsLoggedIn] = useState(false);
-
 
   const handleLogIn = (e) => {
     e.preventDefault();

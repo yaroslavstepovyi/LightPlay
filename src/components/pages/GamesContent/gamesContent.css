@@ -69,6 +69,7 @@
   backdrop-filter: blur(55px);
   opacity: 90%;
   gap: 17px;
+  cursor: pointer;
 }
 
 .content__grid-item-description-left {
@@ -81,7 +82,7 @@
 
 .content__grid-item-description-right {
   align-self: center;
-  max-width: 92px;
+  max-width: 86px;
   overflow: hidden;
   height: -webkit-fill-available;
   gap: 6px;
@@ -120,8 +121,8 @@
   max-width: 94px;
   font-weight: 600;
   font-size: 12px;
-  line-height: 18px;
-  letter-spacing: -0.02em;
+  line-height: 15px;
+  letter-spacing: -0.03em;
   text-decoration-line: underline;
   color: #ffffff;
 }
@@ -196,6 +197,13 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.content__div-item {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
 }
 
 @media (max-width: 1311px) {

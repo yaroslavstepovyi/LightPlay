@@ -1,50 +1,82 @@
 import React from "react";
-import "./dialog.css";
 
-export const DialogAddNewCardGame = () => {
+import "./dialogAddNewCardGame.css";
+
+import { _GAME_IMAGES } from "../../../services";
+import ErrorBubble from "../../../utils/error-bubble";
+import { useAddNewCard } from "../../../hooks";
+
+const DialogAddNewCardGame = ({ addNewCard }) => {
+  const {
+    nameError,
+    descriptionError,
+    reviewError,
+    handleSubmit,
+  } = useAddNewCard(addNewCard);
+
   return (
-    <div className="adding__inputs">
-      <form action="">
-        <input
-          id="adding-name"
-          className="adding__form-inpt"
-          type="text"
-          placeholder="Game name"
-        />
-        <input
-          id="adding-description"
-          className="adding__form-inpt"
-          type="text"
-          placeholder="Game description"
-        />
-        <input
-          id="adding-review"
-          className="adding__form-inpt"
-          type="text"
-          placeholder="Game review"
-        />
-        {/* <input id="adding-image" className="adding__form-inpt" type="text" placeholder="Game image"/>  */}
-        <select className="adding__form-inpt" id="adding-image">
-          <option value="default" disabled selected>
-            Game Image
-          </option>
-          <option value="fifa">fifa</option>
-          <option value="gta">gta</option>
-          <option value="battlefield">battlefield</option>
-          <option value="callofduty">callofduty</option>
-          <option value="doom">doom</option>
-          <option value="fallout">fallout</option>
-          <option value="half-life">half life</option>
-          <option value="heroes">heroes</option>
-          <option value="minecraft">minecraft</option>
-          <option value="mortal-kombat">mortal kombat</option>
-          <option value="stalker">stalker</option>
-          <option value="warcraft">warcraft</option>
-        </select>
-      </form>
-      <button type="submit" className="adding__form-btn">
-        Add New Game
-      </button>
+    <div className="adding modal hidden">
+      <div className="adding__wrap">
+        <div className="adding__headline">
+          <h3>Add New Game</h3>
+        </div>
+        <div className="adding__inputs">
+          <form className="adding__form" onSubmit={handleSubmit}>
+            <div className="input-container">
+              <input
+                name="adding-name"
+                className="adding__form-inpt"
+                type="text"
+                placeholder="Game name"
+                required
+              />
+              {nameError && <ErrorBubble error={nameError} />}
+            </div>
+            <div className="input-container">
+              <input
+                name="adding-description"
+                className="adding__form-inpt"
+                type="text"
+                placeholder="Game description"
+                required
+              />
+              {descriptionError && <ErrorBubble error={descriptionError} />}
+            </div>
+            <div className="input-container">
+              <input
+                name="adding-review"
+                className="adding__form-inpt"
+                type="text"
+                placeholder="Game review"
+                required
+              />
+              {reviewError && <ErrorBubble error={reviewError} />}
+            </div>
+            <div className="input-container">
+              <select
+                className="adding__form-inpt"
+                name="adding-image"
+                defaultValue=""
+                required
+              >
+                <option value="" disabled>
+                  Select Game Image
+                </option>
+                {_GAME_IMAGES.map((image, idx) => (
+                  <option key={idx} value={image}>
+                    {image}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <button type="submit" className="adding__form-btn">
+              Add New Game
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };
+
+export default DialogAddNewCardGame;

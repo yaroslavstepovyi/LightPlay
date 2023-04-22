@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./hero.css";
 
 import { USERS } from "../../mocks/users.mocks";
+import ExploreDeviceCube3D from "../../utils/explore-deviceCube3D";
 
 export const Hero = () => {
+  const [isVisualizing, setIsVisualizing] = useState(false);
+
+  const toggleIsVisualizing = () => {
+    setIsVisualizing(!isVisualizing);
+  };
+
   function onButtonClick() {
     window.open(
       "mailto:yaroslavstepovyi@gmail.com?&subject= VR Games &body=Good afternoon",
@@ -33,14 +40,18 @@ export const Hero = () => {
               <button
                 className="hero-left-btn"
                 type="submit"
-                onClick={onButtonClick}>
+                onClick={onButtonClick}
+              >
                 Invite Friends
               </button>
             </li>
             <li>
-              <a className="hero-left-text expLink" href="#0">
+              <span
+                className="hero-left-text expLink"
+                onClick={() => setIsVisualizing(!isVisualizing)}
+              >
                 Explore Device
-              </a>
+              </span>
               <div className="hero-left-text__mobile">
                 <span>Explore</span>
               </div>
@@ -54,7 +65,8 @@ export const Hero = () => {
                     key={user.id}
                     className="hero-left-icon-img"
                     src={user.img}
-                    alt={user.name}/>
+                    alt={user.name}
+                  />
                 );
               })}
             </ul>
@@ -65,6 +77,9 @@ export const Hero = () => {
           </div>
         </div>
       </div>
+      {isVisualizing && (
+        <ExploreDeviceCube3D toggleIsVisualizing={toggleIsVisualizing} />
+      )}
       <div className="hero-right">
         <div className="hero-right-content">
           <h3 className="hero-right-headline">Cinematic Virtual Reality</h3>
