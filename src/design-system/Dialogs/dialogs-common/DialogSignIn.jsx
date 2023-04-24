@@ -3,7 +3,7 @@ import React, { useState, useContext } from "react";
 import "./dialog.css";
 
 import { DialogWrapper } from "./DialogWrapper";
-import { getAllUsers } from "../../../services";
+import getUsers from "../../../mocks/users.mocks";
 import { encryptUser } from "../../../utils/encryption-user";
 import { AuthContext } from "../../../contexts/authUser";
 
@@ -18,7 +18,7 @@ export const DialogSignIn = ({ onHandleBackgroundBlurHide }) => {
   const handleLogIn = (e) => {
     e.preventDefault();
 
-    getAllUsers()
+    getUsers()
       .then((users) => {
         const matchedUsers = users.filter(
           (user) => user.email === email && user.password === password

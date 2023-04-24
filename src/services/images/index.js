@@ -15,6 +15,7 @@ import Stalker from '../../assets/images/Games/stalker.png'
 import Warcraft from '../../assets/images/Games/warcraft.png'
 import ArrowLeft from '../../assets/icons/arrowLeft.svg'
 import ArrowRight from '../../assets/icons/arrowRight.svg'
+import Reset from '../../assets/images/reset.png'
 
 export {
     Dota2,
@@ -34,6 +35,7 @@ export {
     Warcraft,
     ArrowLeft,
     ArrowRight,
+    Reset,
 }
 
 export const getImageUrl = (imageValue) => {

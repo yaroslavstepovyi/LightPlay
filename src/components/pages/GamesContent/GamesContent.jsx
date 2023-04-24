@@ -10,11 +10,12 @@ import { decryptUser } from "../../../utils/encryption-user";
 import DialogGamesCard from "../GamesCard/DialogGamesCard";
 import { GamesContext } from "../../../contexts/gamesList";
 import { GamesPaginationContext } from "../../../contexts/gamesPagination";
+import { Navigate } from "react-router-dom";
 
 export const GamesContent = () => {
   const { isloggedIn } = useContext(AuthContext);
   const [showGamesCard, setShowGamesCard] = useState(false);
-  const { games, setGames } = useContext(GamesContext);
+  const { setGames } = useContext(GamesContext);
   const user = decryptUser(localStorage.getItem("user"), "secret key");
   const [selectedGame, setSelectedGame] = useState(null);
   const { onHandleOpenDialogSignIn, onHandleBackgroundBlurHide, state } =
@@ -34,6 +35,11 @@ export const GamesContent = () => {
     setSelectedGame(game);
     setShowGamesCard(true);
   };
+
+  if(!isloggedIn){
+    console.log({isloggedIn})
+    return <Navigate to="/"/>
+  }
 
   return (
     <>
@@ -77,8 +83,7 @@ export const GamesContent = () => {
               <p>
                 <button
                   className="content__empty-games__sign-in-btn"
-                  onClick={onHandleOpenDialogSignIn}
-                >
+                  onClick={onHandleOpenDialogSignIn}>
                   Sign in
                 </button>
                 for adding games

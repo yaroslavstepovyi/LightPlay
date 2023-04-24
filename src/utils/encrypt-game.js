@@ -26,5 +26,5 @@ const decryptGame = (encryptedGames) => {
 
 export {
   encryptGame,
-  decryptGame
+  decryptGame,
 }

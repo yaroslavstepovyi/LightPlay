@@ -10,6 +10,7 @@ import VictoryHand from '../../assets/icons/victoryHand.svg'
 import Stronger from '../../assets/icons/stronger.svg'
 import Bulbe from '../../assets/icons/lightBulbe.svg'
 import Ok from '../../assets/icons/ok.svg'
+import Dots from '../../assets/icons/users-three-dots.svg'
 
 export {
     Logo,
@@ -24,4 +25,5 @@ export {
     Stronger,
     Bulbe,
     Ok,
+    Dots,
 }

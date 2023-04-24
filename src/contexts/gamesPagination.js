@@ -46,15 +46,19 @@ const GamesPaginationProvider = ({ children }) => {
         const startIndex = (active - 1) * notesOnPage;
         const endIndex = startIndex + notesOnPage;
         return games.slice(startIndex, endIndex);
-      };
+    };
 
-      const nextPage = () => {
-        setActive(active + 1)
-      }
-    
-      const prevPage = () => {
-        setActive(active - 1)
-      }
+    const nextPage = () => {
+        if (active < Math.ceil(games.length / notesOnPage)) {
+            setActive(active + 1);
+        }
+    }
+
+    const prevPage = () => {
+        if (active > 1) {
+            setActive(active - 1);
+        }
+    }
 
     const value = {
         active,
@@ -62,7 +66,7 @@ const GamesPaginationProvider = ({ children }) => {
         notesOnPage,
         pagination,
         getPaginatedGames,
-        nextPage, 
+        nextPage,
         prevPage,
     };
 
