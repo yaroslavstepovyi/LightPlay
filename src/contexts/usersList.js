@@ -17,7 +17,7 @@ const UsersListProvider = ({ children }) => {
 
         switch (e.target.value) {
             case "admin":
-                sortedUsers.sort((a, b) => (
+                sortedUsers.sort((a, b) => ( 
                     a.role === "admin" ? -1 : b.role === "admin" ? 1 : 0));
                 break;
             case "moderator":
