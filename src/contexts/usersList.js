@@ -10,9 +10,11 @@ const UsersListProvider = ({ children }) => {
   const [usersOrder, setUsersOrder] = useState([]);
   const [isRoleActive, setIsRoleActive] = useState(false);
   const [activeUserId, setActiveUserId] = useState(null);
+  const [activeUserName, setActiveUserName] = useState(null);
 
-  const handleRoleSelect = (userId) => {
+  const handleRoleSelect = (userId, userName) => {
     setActiveUserId(activeUserId !== userId ? userId : null);
+    setActiveUserName(activeUserName !== userName ? userName : null);
     setIsRoleActive(!isRoleActive);
   };
 
@@ -59,6 +61,7 @@ const UsersListProvider = ({ children }) => {
     isRoleActive,
     activeUserId,
     setActiveUserId,
+    activeUserName,
   };
 
   return (

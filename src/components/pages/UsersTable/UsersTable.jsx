@@ -9,8 +9,13 @@ import { decryptUser } from "../../../utils/encryption-user";
 
 export const UsersTable = () => {
   const loggedUser = decryptUser(localStorage.getItem("user"), "secret key");
-  const { users, handleRoleSelect, activeUserId, setActiveUserId } =
-    useContext(usersContext);
+  const {
+    users,
+    handleRoleSelect,
+    activeUserId,
+    setActiveUserId,
+    activeUserName,
+  } = useContext(usersContext);
 
   return (
     <section className="users">
@@ -47,19 +52,28 @@ export const UsersTable = () => {
                     <button
                       className="users__btn-dots"
                       type="button"
-                      data-id={user.id}
-                      data-name={user.name}
-                      onClick={() => handleRoleSelect(user.id)}
+                      onClick={() => {
+                        if (user.id !== loggedUser.id) {
+                          handleRoleSelect(user.id, user.name);
+                        }
+                      }}
                     >
                       <img
                         className="users__datas-dots"
                         src={Dots}
-                        alt="dots"
+                        alt="Dots"
                       />
                     </button>
                     {activeUserId === user.id && (
                       <>
-                        <UsersRoleModal userRole={loggedUser.role} />
+                        <UsersRoleModal
+                          loggedUserRole={loggedUser.role}
+                          loggedUserId={loggedUser.id}
+                          loggedUserName={loggedUser.name}
+                          activeUserId={activeUserId}
+                          activeUserName={activeUserName}
+                          setActiveUserId={setActiveUserId}
+                        />
                         <div
                           className="background-blur-transparent"
                           onClick={() => setActiveUserId(null)}
