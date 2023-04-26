@@ -38,7 +38,6 @@
 .users__datas-table td {
   vertical-align: middle;
   width: max-content;
-  overflow: hidden;
 }
 
 .users__datas-table td span {

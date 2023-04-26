@@ -24,7 +24,7 @@
 .users__filter__search {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 
 .users__filter__search-btn:hover {
@@ -42,7 +42,7 @@
   border: 1px solid #bc3cd8;
   border-radius: 6px;
   background: #0e0e0e;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -71,7 +71,7 @@
 .users__filter__search-box-arrow::before,
 .users__filter__search-box-arrow::after {
   position: absolute;
-  content: "";
+  content: '';
   width: 0;
   height: 0;
   left: 50%;
@@ -88,7 +88,7 @@
 .users__filter__search-option {
   display: flex;
   align-items: center;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -103,9 +103,8 @@
 }
 
 .reset-button {
-  display: none;
   height: 34px;
-  font-family: "Poppins";
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -118,14 +117,19 @@
 }
 
 .reset-btn {
+  display: flex;
+  align-items: center;
   max-width: 20px;
 }
 
-@media (max-width: 1311px) {}
+@media (max-width: 1311px) {
+}
 
-@media (max-width: 1200px) {}
+@media (max-width: 1200px) {
+}
 
-@media (max-width: 1100px) {}
+@media (max-width: 1100px) {
+}
 
 @media (max-width: 921px) {
   /* users filter */
@@ -203,7 +207,8 @@
   }
 }
 
-@media (max-width: 576px) {}
+@media (max-width: 576px) {
+}
 
 @media (min-width: 390px) and (max-width: 450px) {
   /* users filter */

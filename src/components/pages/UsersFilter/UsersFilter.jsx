@@ -1,60 +1,79 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from 'react'
 
-import "./usersFilter.css";
+import './usersFilter.css'
 
-import { usersContext } from "../../../contexts/usersList";
-import { Reset } from "../../../services/images";
+import { usersContext } from '../../../contexts/usersList'
+import { Reset } from '../../../services/images'
+import { USERS } from '../../../mocks/users.mocks'
 
 export const UsersFilter = () => {
-  const { handleRoleSort, sortedOption } = useContext(usersContext);
+  const {
+    handleRoleSort,
+    sortedOption,
+    setSortedOption,
+    setUsersOrder,
+  } = useContext(usersContext);
+
+  const [
+    showResetButton,
+    setShowResetButton
+  ] = useState(false);
+
+  const handleResetSort = () => {
+    setSortedOption('default')
+    setShowResetButton(false);
+    setUsersOrder([...USERS]);
+  }
+
+  useEffect(() => {
+    setShowResetButton(sortedOption !== "default");
+  }, [sortedOption, setSortedOption]);
 
   return (
-    <>
-      <div className="users__filter">
-        <div className="users__filter__wrap">
-          <div className="users__filter__logo-wrap">
-            <div className="users__filter__logo">
-              <h3>VR Users</h3>
-            </div>
+    <div className='users__filter'>
+      <div className='users__filter__wrap'>
+        <div className='users__filter__logo-wrap'>
+          <div className='users__filter__logo'>
+            <h3>VR Users</h3>
           </div>
-          <div className="users__filter__search">
-            <div className="users__filter__search-box">
-              <select
-                id="select"
-                className="users__filter__search-select"
-                defaultValue="default"
-                onChange={handleRoleSort}
+        </div>
+        <div className='users__filter__search'>
+          {showResetButton && (
+            <button type='button' className='reset-button' onClick={handleResetSort}>
+              <img className='reset-btn' src={Reset} alt='reset' />
+            </button>
+          )}
+          <div className='users__filter__search-box'>
+            <select
+              id='select'
+              className='users__filter__search-select'
+              value={sortedOption}
+              onChange={handleRoleSort}
+            >
+              <option
+                className='users__filter__search-option'
+                value='default'
+                disabled
               >
-                <option
-                  className="users__filter__search-option"
-                  value="default"
-                  disabled
-                >
-                  Sort By Role
-                </option>
-                <option className="users__filter__search-option" vlaue="admin">
-                  admin
-                </option>
-                <option
-                  className="users__filter__search-option"
-                  vlaue="moderator"
-                >
-                  moderator
-                </option>
-                <option className="users__filter__search-option" vlaue="user">
-                  user
-                </option>
-              </select>
-              <span className="users__filter__search-box-arrow"></span>
-            </div>
-            {sortedOption === "default" ? (
-              <button type="submit" className="reset-button">
-                <img className="reset-btn" src={Reset} alt="reset" />
-              </button>
-            ) : null}
+                Sort By Role
+              </option>
+              <option className='users__filter__search-option' value='admin'>
+                admin
+              </option>
+              <option
+                className='users__filter__search-option'
+                value='moderator'
+              >
+                moderator
+              </option>
+              <option className='users__filter__search-option' value='user'>
+                user
+              </option>
+            </select>
+            <span className='users__filter__search-box-arrow'></span>
           </div>
         </div>
       </div>
-    </>
-  );
-};
+    </div>
+  )
+}

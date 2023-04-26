@@ -3,10 +3,14 @@ import React, { useContext } from "react";
 import "./usersTable.css";
 
 import { Dots } from "../../images";
+import { UsersRoleModal } from "./UsersRoleModal";
 import { usersContext } from "../../../contexts/usersList";
+import { decryptUser } from "../../../utils/encryption-user";
 
 export const UsersTable = () => {
-  const { users } = useContext(usersContext);
+  const loggedUser = decryptUser(localStorage.getItem("user"), "secret key");
+  const { users, handleRoleSelect, activeUserId, setActiveUserId } =
+    useContext(usersContext);
 
   return (
     <section className="users">
@@ -41,10 +45,11 @@ export const UsersTable = () => {
                   <td>{user.role}</td>
                   <td className="users__datas-user-action">
                     <button
-                      type="button"
                       className="users__btn-dots"
+                      type="button"
                       data-id={user.id}
                       data-name={user.name}
+                      onClick={() => handleRoleSelect(user.id)}
                     >
                       <img
                         className="users__datas-dots"
@@ -52,22 +57,15 @@ export const UsersTable = () => {
                         alt="dots"
                       />
                     </button>
-                    <div className="role hidden">
-                      <ul className="role__lists">
-                        <li className="role__list role-send-email">
-                          <button>Send email</button>
-                        </li>
-                        <li className="role__list role-change-role">
-                          <button>Change Role</button>
-                        </li>
-                        <li className="role__list role-block">
-                          <button>Block</button>
-                        </li>
-                        <li className="role__list role-delete">
-                          <button>Delete</button>
-                        </li>
-                      </ul>
-                    </div>
+                    {activeUserId === user.id && (
+                      <>
+                        <UsersRoleModal userRole={loggedUser.role} />
+                        <div
+                          className="background-blur-transparent"
+                          onClick={() => setActiveUserId(null)}
+                        ></div>
+                      </>
+                    )}
                   </td>
                 </tr>
               ))}

@@ -11,11 +11,10 @@ const encryptGame = (GameObject) => {
 //decryption Game
 const decryptGame = (encryptedGames) => {
   try {
-    const decrypted =
-      CryptoJS
-        .AES
-        .decrypt(encryptedGames, "secret game key")
-        .toString(CryptoJS.enc.Utf8);
+    const decrypted = CryptoJS
+      .AES
+      .decrypt(encryptedGames, "secret game key")
+      .toString(CryptoJS.enc.Utf8);
 
     return JSON.parse(decrypted);
   } catch (err) {
