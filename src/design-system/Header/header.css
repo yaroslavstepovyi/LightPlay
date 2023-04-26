@@ -132,6 +132,9 @@
 
 .header-nav img {
   position: relative;
+  border-radius: 100%;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
   z-index: 999;
 }
@@ -187,7 +190,7 @@
 
 .scrolled {
   background: rgba(14, 14, 14, 1);
-};
+}
 
 @media (max-width: 921px) {
   /* header */
