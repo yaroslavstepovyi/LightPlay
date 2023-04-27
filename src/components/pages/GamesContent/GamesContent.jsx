@@ -36,11 +36,6 @@ export const GamesContent = () => {
     setShowGamesCard(true);
   };
 
-  if(!isloggedIn){
-    console.log({isloggedIn})
-    return <Navigate to="/"/>
-  }
-
   return (
     <>
       {isloggedIn ? (

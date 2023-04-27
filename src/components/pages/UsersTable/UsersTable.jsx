@@ -9,6 +9,8 @@ import { decryptUser } from "../../../utils/encryption-user";
 
 export const UsersTable = () => {
   const loggedUser = decryptUser(localStorage.getItem("user"), "secret key");
+  const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
+
   const {
     users,
     handleRoleSelect,
@@ -16,6 +18,18 @@ export const UsersTable = () => {
     setActiveUserId,
     activeUserName,
   } = useContext(usersContext);
+
+  const handleUserClick = (user) => {
+    if (!loggedUser) {
+      return;
+    }
+
+    if (user.id === loggedUser.id) {
+      return;
+    }
+
+    isLoggedIn && handleRoleSelect(user.id, user.name);
+  };
 
   return (
     <section className="users">
@@ -52,11 +66,7 @@ export const UsersTable = () => {
                     <button
                       className="users__btn-dots"
                       type="button"
-                      onClick={() => {
-                        if (user.id !== loggedUser.id) {
-                          handleRoleSelect(user.id, user.name);
-                        }
-                      }}
+                      onClick={() => handleUserClick(user)}
                     >
                       <img
                         className="users__datas-dots"

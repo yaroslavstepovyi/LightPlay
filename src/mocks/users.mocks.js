@@ -31,7 +31,7 @@ export const USERS =[{
 },
 {   id: 2,
     img: userOnline3,
-    name: "Akih Fukumoto",
+    name: "Akih Lifuk",
     country: "China",
     age: "23",
     email: "for9PartN@gmail.com",
