@@ -10,7 +10,6 @@ import { decryptUser } from "../../../utils/encryption-user";
 import DialogGamesCard from "../GamesCard/DialogGamesCard";
 import { GamesContext } from "../../../contexts/gamesList";
 import { GamesPaginationContext } from "../../../contexts/gamesPagination";
-import { Navigate } from "react-router-dom";
 
 export const GamesContent = () => {
   const { isloggedIn } = useContext(AuthContext);

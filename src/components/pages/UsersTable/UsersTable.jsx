@@ -8,9 +8,9 @@ import { usersContext } from "../../../contexts/usersList";
 import { decryptUser } from "../../../utils/encryption-user";
 
 export const UsersTable = () => {
-  const loggedUser = decryptUser(localStorage.getItem("user"), "secret key");
-  const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
-
+  const loggedUser = decryptUser(
+    localStorage.getItem("user"), "secret key"
+    );
   const {
     users,
     handleRoleSelect,
@@ -20,15 +20,18 @@ export const UsersTable = () => {
   } = useContext(usersContext);
 
   const handleUserClick = (user) => {
-    if (!loggedUser) {
+    const updatedUser = decryptUser(
+      localStorage.getItem("user"), "secret key");
+      
+    if (!updatedUser) {
       return;
     }
 
-    if (user.id === loggedUser.id) {
+    if (user.id === updatedUser.id) {
       return;
     }
 
-    isLoggedIn && handleRoleSelect(user.id, user.name);
+    handleRoleSelect(user.id, user.name);
   };
 
   return (
