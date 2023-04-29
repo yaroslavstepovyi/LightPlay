@@ -5,15 +5,18 @@ import { UsersPagination } from "../../components/pages/UsersPagination";
 import { DefaultLayout } from "../../layouts/DefaultLayout";
 import { UsersFilter } from "../../components/pages/UsersFilter/UsersFilter";
 import { UsersListProvider } from "../../contexts/usersList";
+import { UsersPaginationProvider } from "../../contexts/usersPagination";
 
 export const UsersPage = () => {
   return (
     <>
       <DefaultLayout>
         <UsersListProvider>
-          <UsersFilter />
-          <UsersTable />
-          <UsersPagination />
+          <UsersPaginationProvider>
+            <UsersFilter />
+            <UsersTable />
+            <UsersPagination />
+          </UsersPaginationProvider>
         </UsersListProvider>
       </DefaultLayout>
     </>

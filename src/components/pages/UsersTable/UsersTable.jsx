@@ -6,13 +6,13 @@ import { Dots } from "../../images";
 import { UsersRoleModal } from "./UsersRoleModal";
 import { usersContext } from "../../../contexts/usersList";
 import { decryptUser } from "../../../utils/encryption-user";
+import { UsersPaginationContext } from "../../../contexts/usersPagination";
 
 export const UsersTable = () => {
-  const loggedUser = decryptUser(
-    localStorage.getItem("user"), "secret key"
-    );
+  const { getPaginatedUsers } = useContext(UsersPaginationContext)
+  const loggedUser = decryptUser(localStorage.getItem("user"), "secret key");
+
   const {
-    users,
     handleRoleSelect,
     activeUserId,
     setActiveUserId,
@@ -21,8 +21,10 @@ export const UsersTable = () => {
 
   const handleUserClick = (user) => {
     const updatedUser = decryptUser(
-      localStorage.getItem("user"), "secret key");
-      
+    localStorage
+    .getItem("user"), "secret key"
+    );
+
     if (!updatedUser) {
       return;
     }
@@ -51,7 +53,7 @@ export const UsersTable = () => {
               </tr>
             </tbody>
             <tbody>
-              {users.map((user) => (
+              {getPaginatedUsers().map((user) => (
                 <tr key={user.id}>
                   <td>
                     <img
