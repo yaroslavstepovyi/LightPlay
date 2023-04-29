@@ -1,20 +1,25 @@
 import React, { useContext } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faCog, faQuestionCircle, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUser,
+  faCog,
+  faQuestionCircle,
+  faSignOutAlt,
+} from "@fortawesome/free-solid-svg-icons";
 
-import './dropdown-menu.css'
+import "./dropdown-menu.css";
 
 import { AuthContext } from "../../../../contexts/authUser";
 
-const DropdownUserMenu = ({onHandleBackgroundBlurHide, onHandleUserIcon}) => {
-  const { isloggedIn, setIsLoggedIn } = useContext(AuthContext);
+const DropdownUserMenu = ({ onHandleBackgroundBlurHide, onHandleUserIcon }) => {
+  const { setIsLoggedIn } = useContext(AuthContext);
   const handleLogOut = () => {
     localStorage.removeItem("user");
     onHandleBackgroundBlurHide(false);
     setIsLoggedIn(false);
     onHandleUserIcon();
-  }
+  };
 
   return (
     <div className="dropdown-menu">

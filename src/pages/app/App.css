@@ -77,11 +77,11 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #bc3cd8; 
+  background-color: #333131; 
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #c123e5; 
+  background-color: #4d4b4b; 
 }
 
 @media (max-width: 576px) {

@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
+import { AuthContext } from "../contexts/authUser";
 
 const useAuth = () => {
   const [state, setState] = useState({
@@ -35,10 +36,18 @@ const useAuth = () => {
     }));
   };
 
+  const { setIsLoggedIn } = useContext(AuthContext);
+  const onHandleLogOut = () => {
+    localStorage.removeItem("user");
+    onHandleBackgroundBlurHide(false);
+    setIsLoggedIn(false);
+  };
+
   return {
     state,
     isOpenDropdownMenu,
     onHandleOpenDialogSignIn,
+    onHandleLogOut,
     onHandleBackgroundBlurHide,
     onHandleBurgerMenuToggle,
     onHandleUserIcon,

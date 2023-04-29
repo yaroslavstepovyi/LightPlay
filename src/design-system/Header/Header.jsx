@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
@@ -17,6 +17,7 @@ const Header = ({ scroll }) => {
   const {
     state,
     onHandleOpenDialogSignIn,
+    onHandleLogOut,
     onHandleBackgroundBlurHide,
     onHandleBurgerMenuToggle,
     onHandleUserIcon,
@@ -27,6 +28,7 @@ const Header = ({ scroll }) => {
     state,
     NavigationLinks,
     onHandleOpenDialogSignIn,
+    onHandleLogOut,
     onHandleBackgroundBlurHide,
     onHandleBurgerMenuToggle,
     onHandleUserIcon,
@@ -39,7 +41,9 @@ const Header = ({ scroll }) => {
       <MobileHeader {...commonProps} />
       {state.isDialogVisible && (
         <>
-          <DialogSignIn onHandleBackgroundBlurHide={onHandleBackgroundBlurHide} />
+          <DialogSignIn
+            onHandleBackgroundBlurHide={onHandleBackgroundBlurHide}
+          />
           <div className="background-blur"></div>
         </>
       )}
@@ -125,7 +129,9 @@ const MobileHeader = ({
   state,
   onHandleBurgerMenuToggle,
   onHandleOpenDialogSignIn,
+  onHandleLogOut,
 }) => {
+
   return (
     <>
       {state.isBurgerMenuActive && (
@@ -142,13 +148,23 @@ const MobileHeader = ({
               </li>
             ))}
             <li>
-              <button
-                type="submit"
-                className="header-nav-btn-mobile"
-                onClick={onHandleOpenDialogSignIn}
-              >
-                Sign In
-              </button>
+              {localStorage.getItem("user") ? (
+                <button
+                  type="submit"
+                  className="header-nav-btn-mobile"
+                  onClick={onHandleLogOut}
+                >
+                  Log Out
+                </button>
+              ) : (
+                <button
+                  type="submit"
+                  className="header-nav-btn-mobile"
+                  onClick={onHandleOpenDialogSignIn}
+                >
+                  Sign In
+                </button>
+              )}
             </li>
           </ul>
         </div>

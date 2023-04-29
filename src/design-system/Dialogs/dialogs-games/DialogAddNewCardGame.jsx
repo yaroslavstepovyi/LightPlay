@@ -54,7 +54,7 @@ const DialogAddNewCardGame = ({ addNewCard }) => {
             </div>
             <div className="input-container">
               <select
-                className="adding__form-inpt"
+                className="adding__form-select"
                 name="adding-image"
                 defaultValue=""
                 required

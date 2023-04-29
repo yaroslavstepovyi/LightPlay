@@ -74,6 +74,23 @@
   border-radius: 5px;
 }
 
+.adding__form-select {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+  padding-left: 21px;
+  font-size: 18px;
+  line-height: 27px;
+  color: #fff;
+  background: #000000;
+  border: 2px solid #c8d1e6;
+  border-radius: 5px;
+  width: 528px;
+  height: 67px;
+}
+
 .adding__form-btn {
   display: flex;
   padding: 6px 12px;
@@ -121,4 +138,104 @@
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
   border-bottom: 7px solid #f2f2f2;
+}
+
+@media (min-width: 450px) and (max-width: 576px) {
+  .adding {
+    max-width: 408px;
+  }
+
+  .adding__wrap {
+    gap: 14px;
+  }
+
+  .adding__wrap form {
+    margin-bottom: 16px;
+    gap: 16px;
+  }
+
+  .adding__headline h3 {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 16px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+  }
+
+  .adding__form-inpt {
+    width: 372px;
+    height: 31px;
+    padding-left: 21px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+
+  .adding__inputs select {
+    width: 372px;
+    height: 40px;
+    padding-right: 5px;
+    cursor: pointer;
+  }
+
+  .adding__form-btn {
+    padding: 4px 20px;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 21px;
+    width: 100%;
+    max-width: 135px;
+    max-height: 36px;
+  }
+}
+
+@media (min-width: 390px) and (max-width: 450px) {
+  .adding {
+    max-width: 348px;
+  }
+
+  .adding__wrap {
+    gap: 14px;
+  }
+
+  .adding__wrap form {
+    margin-bottom: 3px;
+    gap: 16px;
+  }
+
+  .adding__headline h3 {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 16px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+  }
+
+  .adding__form-inpt {
+    width: 312px;
+    height: 31px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+
+  .adding__form-select {
+    width: 312px;
+    height: 40px;
+    font-size: 18px;
+    line-height: 27px;
+    color: #fff;
+    background: #000000;
+    border: 2px solid #c8d1e6;
+    border-radius: 5px;
+  }
+
+  .adding__form-btn {
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 21px;
+    width: 100%;
+    max-width: 135px;
+    max-height: 33px;
+  }
 }

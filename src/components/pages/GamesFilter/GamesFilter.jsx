@@ -33,7 +33,7 @@ export const GamesFilter = () => {
                 type="submit"
                 onClick={onHandleAddNewCard}
               >
-                Add new card
+                Add New Card
               </button>
               <div className="filter__search-box">
                 <select
