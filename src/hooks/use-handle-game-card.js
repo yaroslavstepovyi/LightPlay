@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 
 import { getDeafultGames } from "../services";
-import { GamesContext } from "../contexts/gamesList";
+import { GamesContext } from "../contexts/games-list";
 
 const useHandleGameCards = () => {
   const [isDialogVisible, setIsDialogVisible] = useState(false);
@@ -17,7 +17,7 @@ const useHandleGameCards = () => {
         setGames(defaultGames);
       });
     }
-  }, []);
+  }, [setGames]);
 
   const onAddNewCard = () => {
     setIsDialogVisible(true);

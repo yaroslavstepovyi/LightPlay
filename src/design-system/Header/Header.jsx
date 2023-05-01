@@ -1,17 +1,17 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
 import "./header.css";
 
 import { Logo } from "../../components/images";
-import { DialogSignIn } from "../Dialogs";
-import { DropdownUserMenu } from "../Dialogs/dialogs-common/dialog-dropdown-menu";
+import { DialogSignIn } from "../dialogs";
+import { DropdownUserMenu } from "../dialogs/dialogs-common/dialog-dropdown-menu";
 import { NavigationLinks } from "../../routers";
 import { useAuth } from "../../hooks";
 import { decryptUser } from "../../utils/encryption-user";
 
-import withScroll from "../../hoc-helpers/withScroll";
+import withScroll from "../../hoc-helpers/with-scroll";
 
 const Header = ({ scroll }) => {
   const {

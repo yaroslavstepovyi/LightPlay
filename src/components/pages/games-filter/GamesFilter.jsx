@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 
-import "./gamesFilter.css";
+import "./games-filter.css";
 
-import { AuthContext } from "../../../contexts/authUser";
+import { AuthContext } from "../../../contexts/auth-user";
 import { useHandleGameCards } from "../../../hooks";
-import { DialogAddNewCardGame } from "../../../design-system/Dialogs/dialogs-games";
-import { GamesContext } from "../../../contexts/gamesList";
+import { DialogAddNewCardGame } from "../../../design-system/dialogs/dialogs-games";
+import { GamesContext } from "../../../contexts/games-list";
 
 export const GamesFilter = () => {
   const { isloggedIn } = useContext(AuthContext);

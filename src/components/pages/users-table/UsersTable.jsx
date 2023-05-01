@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 
-import "./usersTable.css";
+import "./users-table.css";
 
 import { Dots } from "../../images";
-import { UsersRoleModal } from "./UsersRoleModal";
-import { usersContext } from "../../../contexts/usersList";
+import { UsersRoleModal } from "./users-role-modal";
+import { usersContext } from "../../../contexts/users-list";
 import { decryptUser } from "../../../utils/encryption-user";
-import { UsersPaginationContext } from "../../../contexts/usersPagination";
+import { UsersPaginationContext } from "../../../contexts/users-pagination";
 
 export const UsersTable = () => {
   const { getPaginatedUsers } = useContext(UsersPaginationContext)

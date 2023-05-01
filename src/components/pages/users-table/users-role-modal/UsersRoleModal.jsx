@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./usersRoleModal.css";
+import "./users-role-modal.css";
 
 const UsersRoleModal = ({
   loggedUserRole,

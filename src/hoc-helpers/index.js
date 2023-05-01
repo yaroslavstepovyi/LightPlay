@@ -1,5 +1,5 @@
-import withScroll from "./withScroll";
-import ErrorBoundary from "./withErrorBoundary";
+import withScroll from "./with-scroll";
+import ErrorBoundary from "./with-error-boundary";
 
 export {
     withScroll,

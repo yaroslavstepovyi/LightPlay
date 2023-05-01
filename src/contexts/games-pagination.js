@@ -1,5 +1,5 @@
 import { createContext, useState, useContext } from 'react';
-import { GamesContext } from './gamesList';
+import { GamesContext } from './games-list';
 
 const GamesPaginationContext = createContext();
 

@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react'
 
-import './usersFilter.css'
+import './users-filter.css'
 
-import { usersContext } from '../../../contexts/usersList'
+import { usersContext } from '../../../contexts/users-list'
 import { Reset } from '../../../services/images'
 import { USERS } from '../../../mocks/users.mocks'
 

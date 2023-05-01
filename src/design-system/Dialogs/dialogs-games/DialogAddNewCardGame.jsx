@@ -1,8 +1,8 @@
 import React from "react";
 
-import "./dialogAddNewCardGame.css";
+import "./dialog-add-new-card-game.css";
 
-import { _GAME_IMAGES } from "../../../services";
+import { GAME_IMAGES } from "../../../services";
 import ErrorBubble from "../../../utils/error-bubble";
 import { useAddNewCard } from "../../../hooks";
 
@@ -62,7 +62,7 @@ const DialogAddNewCardGame = ({ addNewCard }) => {
                 <option value="" disabled>
                   Select Game Image
                 </option>
-                {_GAME_IMAGES.map((image, idx) => (
+                {GAME_IMAGES.map((image, idx) => (
                   <option key={idx} value={image}>
                     {image}
                   </option>

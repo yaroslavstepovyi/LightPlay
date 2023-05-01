@@ -1,23 +1,23 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
-import "./hero.css";
+import './hero.css'
 
-import { USERS } from "../../mocks/users.mocks";
-import ExploreDeviceCube3D from "../../utils/explore-deviceCube3D";
+import { USERS } from '../../mocks/users.mocks'
+import ExploreDeviceCube3D from '../../utils/explore-device-cube3D'
 
 export const Hero = () => {
-  const [isVisualizing, setIsVisualizing] = useState(false);
+  const [isVisualizing, setIsVisualizing] = useState(false)
 
   const toggleIsVisualizing = () => {
-    setIsVisualizing(!isVisualizing);
-  };
+    setIsVisualizing(!isVisualizing)
+  }
 
   function onButtonClick() {
     window.open(
-      "mailto:yaroslavstepovyi@gmail.com?&subject= VR Games &body=Good afternoon",
-      "_blank",
-      "noopener noreferrer"
-    );
+      'mailto:yaroslavstepovyi@gmail.com?&subject= VR Games &body=Good afternoon',
+      '_blank',
+      'noopener noreferrer',
+    )
   }
 
   return (
@@ -67,7 +67,7 @@ export const Hero = () => {
                     src={user.img}
                     alt={user.name}
                   />
-                );
+                )
               })}
             </ul>
             <div className="hero-left-wrapper">
@@ -91,5 +91,5 @@ export const Hero = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}

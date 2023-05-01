@@ -1,13 +1,13 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-import "./App.css";
+import "./app.css";
 
 import { HomePage } from "../home";
 import { GamesPage } from "../games";
 import { UsersPage } from "../users";
 import { ErrorBoundary } from "../../hoc-helpers";
-import { AuthProvider } from "../../contexts/authUser";
+import { AuthProvider } from "../../contexts/auth-user";
 
 export const App = () => {
   return (

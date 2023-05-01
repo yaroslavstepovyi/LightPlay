@@ -1,9 +1,9 @@
-import { _GAME_IMAGES } from './selectGameImage'
-import { DEFAULTGAMES } from './defaultGames'
-import getDeafultGames from './defaultGames'
+import { GAME_IMAGES } from './select-game-image'
+import { defaultGames } from './default-games'
+import getDeafultGames from './default-games'
 
 export {
-    _GAME_IMAGES,
-    DEFAULTGAMES,
+    GAME_IMAGES,
+    defaultGames,
     getDeafultGames,
 }

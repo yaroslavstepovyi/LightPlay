@@ -1,4 +1,4 @@
-export const _GAME_IMAGES = [
+export const GAME_IMAGES = [
     "Fifa",
     "GTA",
     "Battle Field",

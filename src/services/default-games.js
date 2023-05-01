@@ -2,9 +2,9 @@ import {
   Dota2,
   GalacticWarfare,
   DragonsLair,
-} from '../services/images'
+} from './images'
 
-export const DEFAULTGAMES = [{
+export const defaultGames = [{
   id: 1,
   name: "Dota 2",
   description: "Dota 2 is a multiplayer online battle arena (MOBA) video game in which two teams of five players",
@@ -33,8 +33,8 @@ export const DEFAULTGAMES = [{
 const getDeafultGames = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (DEFAULTGAMES) {
-        resolve(DEFAULTGAMES);
+      if (defaultGames) {
+        resolve(defaultGames);
       } else {
         reject(new Error('Error fetching users'))
       }

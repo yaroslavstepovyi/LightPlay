@@ -1,15 +1,15 @@
 import React, { useContext, useState, useEffect } from "react";
 
-import "./gamesContent.css";
+import "./games-content.css";
 
-import { AuthContext } from "../../../contexts/authUser";
+import { AuthContext } from "../../../contexts/auth-user";
 import { useAuth } from "../../../hooks";
-import { DialogSignIn } from "../../../design-system/Dialogs";
-import getDeafultGames from "../../../services/defaultGames";
+import { DialogSignIn } from "../../../design-system/dialogs";
+import getDeafultGames from "../../../services/default-games";
 import { decryptUser } from "../../../utils/encryption-user";
-import DialogGamesCard from "../GamesCard/DialogGamesCard";
-import { GamesContext } from "../../../contexts/gamesList";
-import { GamesPaginationContext } from "../../../contexts/gamesPagination";
+import DialogGamesCard from "../games-card/DialogGamesCard";
+import { GamesContext } from "../../../contexts/games-list";
+import { GamesPaginationContext } from "../../../contexts/games-pagination";
 
 export const GamesContent = () => {
   const { isloggedIn } = useContext(AuthContext);

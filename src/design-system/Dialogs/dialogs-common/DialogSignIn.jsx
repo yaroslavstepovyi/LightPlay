@@ -1,49 +1,50 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext } from 'react'
 
-import "./dialog.css";
+import './dialog.css'
 
-import { DialogWrapper } from "./DialogWrapper";
-import getUsers from "../../../mocks/users.mocks";
-import { encryptUser } from "../../../utils/encryption-user";
-import { AuthContext } from "../../../contexts/authUser";
-
+import { DialogWrapper } from './DialogWrapper'
+import getUsers from '../../../mocks/users.mocks'
+import { encryptUser } from '../../../utils/encryption-user'
+import { AuthContext } from '../../../contexts/auth-user'
 
 export const DialogSignIn = ({ onHandleBackgroundBlurHide }) => {
-  const { isloggedIn, setIsLoggedIn } = useContext(AuthContext);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [loggedInUsers, setLoggedInUser] = useState(null);
-  const [error, setError] = useState("");
+  const { isloggedIn, setIsLoggedIn, setLoggedInUser } = useContext(AuthContext);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleLogIn = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     getUsers()
       .then((users) => {
         const matchedUsers = users.filter(
-          (user) => user.email === email && user.password === password
-        );
+          (user) => user.email === email && user.password === password,
+        )
 
         if (matchedUsers.length > 0) {
-          const userObject = matchedUsers[0];
-          encryptUser(userObject)
+          const userObject = matchedUsers[0]
+          encryptUser(userObject);
 
           setLoggedInUser(userObject);
 
-          localStorage.setItem("user", JSON.stringify(encryptUser(userObject)));
+          localStorage.setItem('user', JSON.stringify(encryptUser(userObject)));
 
-          setPassword("");
-          setEmail("");
-          setError("");
+          setPassword('');
+          setEmail('');
+          setError('');
           setIsLoggedIn(true);
-          onHandleBackgroundBlurHide(false)
+          onHandleBackgroundBlurHide(false);
         } else {
-          setError(new Error("Invalid Email or Password"));
+          setError(new Error('Invalid Email or Password'));
         }
       })
-      .catch((err) => setError(new Error("Error fetching user")));
-  };
-  
+      .catch((err) => {
+        setError(new Error('Error fetching user'));
+        console.log(err);
+      })
+  }
+
   return (
     <>
       {!isloggedIn && (
@@ -68,8 +69,8 @@ export const DialogSignIn = ({ onHandleBackgroundBlurHide }) => {
               />
               <button type="submit" className="sign-in__form-btn">
                 Sign In
-              </button> 
-              
+              </button>
+
               {error && (
                 <p className="invalid-email-password">{error.toString()}</p>
               )}
@@ -78,5 +79,5 @@ export const DialogSignIn = ({ onHandleBackgroundBlurHide }) => {
         </DialogWrapper>
       )}
     </>
-  );
-};
+  )
+}

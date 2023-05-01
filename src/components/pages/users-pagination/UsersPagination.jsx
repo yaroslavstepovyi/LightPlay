@@ -1,19 +1,15 @@
 import React, { useContext } from 'react'
 
-import './gamesPagination.css'
+import '../games-pagination/games-pagination.css'
 
-import { AuthContext } from '../../../contexts/authUser'
-import { GamesPaginationContext } from '../../../contexts/gamesPagination'
+import { UsersPaginationContext } from '../../../contexts/users-pagination'
 import { ArrowLeft, ArrowRight } from '../../../services/images'
 
-export const GamesPagination = () => {
-  const { isloggedIn } = useContext(AuthContext)
-  const { pagination, nextPage, prevPage } = useContext(GamesPaginationContext)
+export const UsersPagination = () => {
+  const { pagination, prevPage, nextPage } = useContext(UsersPaginationContext);
 
   return (
-    <>
-      {isloggedIn && (
-        <section className='pagination'>
+    <section className='pagination'>
           <div className='pagination__list'>
             <ul className='pagination__list-btns'>
               <li data-page='min' className='pagination__list-btn'>
@@ -37,7 +33,5 @@ export const GamesPagination = () => {
             </ul>
           </div>
         </section>
-      )}
-    </>
   )
 }

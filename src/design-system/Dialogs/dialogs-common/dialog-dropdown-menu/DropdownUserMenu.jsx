@@ -8,9 +8,9 @@ import {
   faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
-import "./dropdown-menu.css";
+import "./dropdown-user-menu.css";
 
-import { AuthContext } from "../../../../contexts/authUser";
+import { AuthContext } from "../../../../contexts/auth-user";
 
 const DropdownUserMenu = ({ onHandleBackgroundBlurHide, onHandleUserIcon }) => {
   const { setIsLoggedIn } = useContext(AuthContext);

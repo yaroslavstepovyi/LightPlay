@@ -1,6 +1,6 @@
-import useAuth from "./useAuth";
-import useHandleGameCards from "./useHandleGameCard";
-import useAddNewCard from "./useAddNewCard";
+import useAuth from "./use-auth";
+import useHandleGameCards from "./use-handle-game-card";
+import useAddNewCard from "./use-add-new-card";
 
 export {
     useAuth,
