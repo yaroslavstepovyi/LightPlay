@@ -52,6 +52,16 @@ const useAddNewCard = (addNewCard) => {
       const id = Math.floor(Math.random() * 1000)
       const newGame = { id, name, description, review, img: imageUrl }
 
+      const storedGames = JSON.parse(localStorage.getItem('games'))
+      if (storedGames) {
+        const existingGame = storedGames.find((game) => game.img === imageUrl)
+        
+        if (existingGame) {
+          resetForm()
+          return
+        }
+      }
+
       addNewCard(newGame)
       resetForm()
     }
