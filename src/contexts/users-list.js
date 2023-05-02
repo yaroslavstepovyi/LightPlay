@@ -2,6 +2,8 @@ import { createContext, useState, useEffect } from 'react'
 
 import { getUsers, USERS } from '../mocks/users-mocks'
 
+import { sortFunctions } from '../utils/sort'
+
 const usersContext = createContext()
 
 const UsersListProvider = ({ children }) => {
@@ -18,29 +20,12 @@ const UsersListProvider = ({ children }) => {
   }
 
   const handleRoleSort = (e) => {
-    setSortedOption(e.target.value)
+    const sortedUsers = [...USERS]
 
-    let sortedUsers = [...USERS]
-
-    switch (e.target.value) {
-      case 'admin':
-        sortedUsers.sort((a, b) =>
-          a.role === 'admin' ? -1 : b.role === 'admin' ? 1 : 0,
-        )
-        break
-      case 'moderator':
-        sortedUsers.sort((a, b) =>
-          a.role === 'moderator' ? -1 : b.role === 'moderator' ? 1 : 0,
-        )
-        break
-      case 'user':
-        sortedUsers.sort((a, b) =>
-          a.role === 'user' ? -1 : b.role === 'user' ? 1 : 0,
-        )
-        break
-      default:
-        break
+    if (sortFunctions.role.hasOwnProperty(e.target.value)) {
+      sortedUsers.sort(sortFunctions.role[e.target.value])
     }
+
     setUsersOrder(sortedUsers)
   }
 
