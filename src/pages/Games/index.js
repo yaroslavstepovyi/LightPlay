@@ -1,5 +1,3 @@
-import {GamesPage} from './GamesPage'
+import { GamesPage } from './GamesPage'
 
-export {
-    GamesPage
-}
+export { GamesPage }

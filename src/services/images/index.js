@@ -17,55 +17,43 @@ import ArrowLeft from '../../assets/icons/arrow-left.svg'
 import ArrowRight from '../../assets/icons/arrow-right.svg'
 import Reset from '../../assets/images/reset.png'
 
-export {
-    Dota2,
-    GalacticWarfare,
-    DragonsLair,
-    Fifa,
-    GTA,
-    BattleField,
-    CallOfDuty,
-    Doom,
-    Fallout,
-    HalfLife,
-    Heroes,
-    Minecraft,
-    MortalKombat,
-    Stalker,
-    Warcraft,
-    ArrowLeft,
-    ArrowRight,
-    Reset,
+const imageUrls = {
+  'Fifa': Fifa,
+  'GTA': GTA,
+  'Battle Field': BattleField,
+  'Call of Duty': CallOfDuty,
+  'Doom': Doom,
+  'Fallout': Fallout,
+  'Half-life': HalfLife,
+  'Heroes': Heroes,
+  'Minecraft': Minecraft,
+  'Mortal-kombat': MortalKombat,
+  'Stalker': Stalker,
+  'Warcraft': Warcraft,
 }
 
-export const getImageUrl = (imageValue) => {
-    switch (imageValue) {
-      case "Fifa":
-        return Fifa;
-      case "GTA":
-        return GTA;
-      case "Battle Field":
-        return BattleField;
-      case "Call of Duty":
-        return CallOfDuty;
-      case "Doom":
-        return Doom;
-      case "Fallout":
-        return Fallout;
-      case "Half-life":
-        return HalfLife;
-      case "Heroes":
-        return Heroes;
-      case "Minecraft":
-        return Minecraft;
-      case "Mortal-kombat":
-        return MortalKombat;
-      case "Stalker":
-        return Stalker;
-      case "Warcraft":
-        return Warcraft;
-      default:
-        return "";
-    }
-  };
-  
+const getImageUrl = (imageValue) => {
+  return imageUrls[imageValue];
+}
+
+export {
+  getImageUrl,
+  Dota2,
+  GalacticWarfare,
+  DragonsLair,
+  Fifa,
+  GTA,
+  BattleField,
+  CallOfDuty,
+  Doom,
+  Fallout,
+  HalfLife,
+  Heroes,
+  Minecraft,
+  MortalKombat,
+  Stalker,
+  Warcraft,
+  ArrowLeft,
+  ArrowRight,
+  Reset,
+}

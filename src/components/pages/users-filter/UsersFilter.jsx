@@ -4,7 +4,7 @@ import './users-filter.css'
 
 import { usersContext } from '../../../contexts/users-list'
 import { Reset } from '../../../services/images'
-import { USERS } from '../../../mocks/users.mocks'
+import { USERS } from '../../../mocks/users-mocks'
 
 export const UsersFilter = () => {
   const {

@@ -1,15 +1,15 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
+import React from 'react'
+import { Route, Routes } from 'react-router-dom'
 
-import "./app.css";
+import './app.css'
 
-import { HomePage } from "../home";
-import { GamesPage } from "../games";
-import { UsersPage } from "../users";
-import { ErrorBoundary } from "../../hoc-helpers";
-import { AuthProvider } from "../../contexts/auth-user";
+import { HomePage } from '../home'
+import { GamesPage } from '../games'
+import { UsersPage } from '../users'
+import { ErrorBoundary } from '../../components/common/error-boundary/ErrorBoundary'
+import { AuthProvider } from '../../contexts/auth-user'
 
-export const App = () => {
+const App = () => {
   return (
     <ErrorBoundary>
       <AuthProvider>
@@ -22,5 +22,7 @@ export const App = () => {
         </section>
       </AuthProvider>
     </ErrorBoundary>
-  );
-};
+  )
+}
+
+export { App }

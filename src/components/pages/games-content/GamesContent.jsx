@@ -5,7 +5,7 @@ import "./games-content.css";
 import { AuthContext } from "../../../contexts/auth-user";
 import { useAuth } from "../../../hooks";
 import { DialogSignIn } from "../../../design-system/dialogs";
-import getDeafultGames from "../../../services/default-games";
+import {getDeafultGames} from "../../../services/default-games";
 import { decryptUser } from "../../../utils/encryption-user";
 import DialogGamesCard from "../games-card/DialogGamesCard";
 import { GamesContext } from "../../../contexts/games-list";

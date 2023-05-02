@@ -1,36 +1,34 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from 'react'
 
-import { getDeafultGames } from "../services";
-import { GamesContext } from "../contexts/games-list";
+import { getDeafultGames } from '../services'
+import { GamesContext } from '../contexts/games-list'
 
 const useHandleGameCards = () => {
-  const [isDialogVisible, setIsDialogVisible] = useState(false);
-  const { games, setGames } = useContext(GamesContext);
+  const [isDialogVisible, setIsDialogVisible] = useState(false)
+  const { games, setGames } = useContext(GamesContext)
 
   useEffect(() => {
-    const savedGames = JSON.parse(localStorage.getItem("games"));
-    if (savedGames) {
-      setGames(savedGames);
-    } else {
-      getDeafultGames().then((defaultGames) => {
-        localStorage.setItem("games", JSON.stringify(defaultGames));
-        setGames(defaultGames);
-      });
-    }
-  }, [setGames]);
+    const savedGames = JSON.parse(localStorage.getItem('games'))
+    savedGames
+      ? setGames(savedGames)
+      : getDeafultGames().then((defaultGames) => {
+          localStorage.setItem('games', JSON.stringify(defaultGames))
+          setGames(defaultGames)
+        })
+  }, [setGames])
 
   const onAddNewCard = () => {
-    setIsDialogVisible(true);
-  };
+    setIsDialogVisible(true)
+  }
 
   const addNewCard = (newGame) => {
-    const updatedGames = [...games, newGame];
-    setGames(updatedGames);
-    localStorage.setItem("games", JSON.stringify(updatedGames));
-    setIsDialogVisible(false);
-  };
+    const updatedGames = [...games, newGame]
+    setGames(updatedGames)
+    localStorage.setItem('games', JSON.stringify(updatedGames))
+    setIsDialogVisible(false)
+  }
 
-  return { onAddNewCard, isDialogVisible, setIsDialogVisible, addNewCard };
-};
+  return { onAddNewCard, isDialogVisible, setIsDialogVisible, addNewCard }
+}
 
-export default useHandleGameCards;
+export { useHandleGameCards }

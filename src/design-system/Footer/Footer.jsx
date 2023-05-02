@@ -1,55 +1,24 @@
-import React, { useState, useRef } from "react";
+import React from 'react'
 
-import "./footer.css";
+import './footer.css'
 
-import emailjs from "emailjs-com";
-import { _WELLCOME_MESSAGE } from "../../utils/welcome-message";
+import { WELLCOME_MESSAGE } from '../../utils/send-email'
+import { useEmailSender } from '../../contexts/send-email'
 
-export const Footer = () => {
-  const [emailValue, setEmailValue] = useState("");
-  const [showAlert, setShowAlert] = useState(false);
-
-  const form = useRef();
-  const message_text = _WELLCOME_MESSAGE;
-
-  function onHandleInputChange(e) {
-    setEmailValue(e.target.value);
-
-    if(e.key === 'Enter'){
-      sendEmail(e)
-    }
-  }
-
-  const sendEmail = (e) => {
-    e.preventDefault();
-
-    const serviceId = "service_b7u1b76";
-    const templateId = "template_8v2vbue";
-    const userId = "c7r7Ishe4hocmzPcD";
-
-    const formData = new FormData(form.current);
-    const userEmail = formData.get("emailValue");
-
-    emailjs
-      .sendForm( serviceId, templateId, form.current, userId, formData, { to_email: userEmail })
-      .then(() => {
-          setShowAlert(true);
-          setTimeout(() =>{
-            setShowAlert(false);
-          }, 5000)
-        },
-        (error) => {
-          console.log("error:", error.text);
-        }
-      );
-  };
-
+const Footer = () => {
+  const { 
+    emailValue, 
+    showAlert, 
+    form, 
+    onEmailInputChange, 
+    onSubmit } = useEmailSender()
+    
   return (
     <footer className="footer">
       {showAlert && (
-          <div className="alert-message" id="success-message">
-            Your message has been sent successfully!
-          </div>
+        <div className="alert-message" id="success-message">
+          Your message has been sent successfully!
+        </div>
       )}
       <div className="footer-wrap">
         <div className="footer-headline">
@@ -66,18 +35,22 @@ export const Footer = () => {
               type="email"
               name="userEmail"
               value={emailValue}
-              onChange={onHandleInputChange}
-              placeholder="Your Email"/>
+              onChange={onEmailInputChange}
+              placeholder="Your Email"
+            />
             <button
               className="footer-search__btn"
               type="submit"
-              onClick={sendEmail}>
+              onClick={onSubmit}
+            >
               Send
             </button>
           </div>
-          <input type="hidden" name="message" value={message_text} />
+          <input type="hidden" name="message" value={WELLCOME_MESSAGE} />
         </form>
       </div>
     </footer>
-  );
-};
+  )
+}
+
+export { Footer }

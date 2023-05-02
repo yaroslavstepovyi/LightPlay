@@ -1,7 +1,8 @@
-import React from "react";
-import "./dialog.css";
+import React from 'react'
 
-export const DialogWrapper = ({ children, onHandleBackgroundBlurHide }) => {
+import './dialog.css'
+
+const DialogWrapper = ({ children, onHandleBackgroundBlurHide }) => {
   return (
     <div className="sign-in__wrap">
       <div className="sign-in modal hidden">
@@ -9,16 +10,19 @@ export const DialogWrapper = ({ children, onHandleBackgroundBlurHide }) => {
           <div className="sign-in__headline">
             <h3>
               Authorization
-              <button 
-              className="sign-in-close" 
-              onClick={onHandleBackgroundBlurHide}>
-              X
+              <button
+                className="sign-in-close"
+                onClick={onHandleBackgroundBlurHide}
+              >
+                X
               </button>
-             </h3>
+            </h3>
           </div>
         </div>
         {children}
       </div>
     </div>
-  );
-};
+  )
+}
+
+export { DialogWrapper }

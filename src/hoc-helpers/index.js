@@ -1,7 +1,3 @@
-import withScroll from "./with-scroll";
-import ErrorBoundary from "./with-error-boundary";
+import { withScroll } from './with-scroll'
 
-export {
-    withScroll,
-    ErrorBoundary
-}
+export { withScroll }

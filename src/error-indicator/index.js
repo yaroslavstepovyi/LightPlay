@@ -1,5 +1,3 @@
-import ErrorIndicator from "./ErrorIndicator";
+import { ErrorIndicator } from './ErrorIndicator'
 
-export {
-    ErrorIndicator
-}
+export { ErrorIndicator }

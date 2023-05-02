@@ -1,4 +1,4 @@
-export const GAME_IMAGES = [
+const GAME_IMAGES = [
     "Fifa",
     "GTA",
     "Battle Field",
@@ -13,4 +13,5 @@ export const GAME_IMAGES = [
     "Warcraft",
 ];
 
+export { GAME_IMAGES }
 

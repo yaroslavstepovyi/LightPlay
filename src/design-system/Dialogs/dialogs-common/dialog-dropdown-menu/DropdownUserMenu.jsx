@@ -1,47 +1,45 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUser,
-  faCog,
-  faQuestionCircle,
-  faSignOutAlt,
-} from "@fortawesome/free-solid-svg-icons";
+import './dropdown-user-menu.css'
 
-import "./dropdown-user-menu.css";
-
-import { AuthContext } from "../../../../contexts/auth-user";
+import { AuthContext } from '../../../../contexts/auth-user'
+import { removeFromLocalStorage } from '../../../../utils/local-storage-utils'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser, faCog } from '@fortawesome/free-solid-svg-icons'
+import {faQuestionCircle, faSignOutAlt} from '@fortawesome/free-solid-svg-icons'
 
 const DropdownUserMenu = ({ onHandleBackgroundBlurHide, onHandleUserIcon }) => {
-  const { setIsLoggedIn } = useContext(AuthContext);
+  const { setIsLoggedIn } = useContext(AuthContext)
+  
   const handleLogOut = () => {
-    localStorage.removeItem("user");
-    onHandleBackgroundBlurHide(false);
-    setIsLoggedIn(false);
-    onHandleUserIcon();
-  };
+    removeFromLocalStorage('user')
+    onHandleBackgroundBlurHide(false)
+    setIsLoggedIn(false)
+    onHandleUserIcon()
+  }
 
   return (
     <div className="dropdown-menu">
       <div className="triangle"></div>
       <ul>
         <li>
-          <a href="#0">
+          <Link to="#profile">
             <FontAwesomeIcon className="font-awesome" icon={faUser} />
             <span>Profile</span>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#1">
+          <Link to="#settings">
             <FontAwesomeIcon className="font-awesome" icon={faCog} />
             <span>Settings</span>
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#2">
+          <Link to="#help">
             <FontAwesomeIcon className="font-awesome" icon={faQuestionCircle} />
             <span>Help</span>
-          </a>
+          </Link>
         </li>
         <li>
           <div className="log-out" onClick={handleLogOut}>
@@ -51,7 +49,7 @@ const DropdownUserMenu = ({ onHandleBackgroundBlurHide, onHandleUserIcon }) => {
         </li>
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default DropdownUserMenu;
+export { DropdownUserMenu }

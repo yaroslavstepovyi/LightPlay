@@ -1,5 +1,3 @@
-import {Values} from './Values'
+import { Values } from './Values'
 
-export {
-    Values
-}
+export { Values }

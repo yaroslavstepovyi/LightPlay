@@ -1,1 +1,3 @@
-export * from './Experience'
+import { Experience } from './Experience'
+
+export { Experience }

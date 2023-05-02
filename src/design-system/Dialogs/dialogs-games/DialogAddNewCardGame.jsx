@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react'
 
-import "./dialog-add-new-card-game.css";
+import './dialog-add-new-card-game.css'
 
-import { GAME_IMAGES } from "../../../services";
-import ErrorBubble from "../../../utils/error-bubble";
-import { useAddNewCard } from "../../../hooks";
+import { GAME_IMAGES } from '../../../services'
+import { ErrorBubble } from '../../../components/common/error-bubble'
+import { useAddNewCard } from '../../../hooks'
 
 const DialogAddNewCardGame = ({ addNewCard }) => {
   const {
@@ -12,7 +12,11 @@ const DialogAddNewCardGame = ({ addNewCard }) => {
     descriptionError,
     reviewError,
     handleSubmit,
-  } = useAddNewCard(addNewCard);
+    nameInputRef,
+    descriptionInputRef,
+    reviewInputRef,
+    imageSelectRef,
+  } = useAddNewCard(addNewCard)
 
   return (
     <div className="adding modal hidden">
@@ -28,6 +32,7 @@ const DialogAddNewCardGame = ({ addNewCard }) => {
                 className="adding__form-inpt"
                 type="text"
                 placeholder="Game name"
+                ref={nameInputRef}
                 required
               />
               {nameError && <ErrorBubble error={nameError} />}
@@ -38,6 +43,7 @@ const DialogAddNewCardGame = ({ addNewCard }) => {
                 className="adding__form-inpt"
                 type="text"
                 placeholder="Game description"
+                ref={descriptionInputRef}
                 required
               />
               {descriptionError && <ErrorBubble error={descriptionError} />}
@@ -48,6 +54,7 @@ const DialogAddNewCardGame = ({ addNewCard }) => {
                 className="adding__form-inpt"
                 type="text"
                 placeholder="Game review"
+                ref={reviewInputRef}
                 required
               />
               {reviewError && <ErrorBubble error={reviewError} />}
@@ -57,6 +64,7 @@ const DialogAddNewCardGame = ({ addNewCard }) => {
                 className="adding__form-select"
                 name="adding-image"
                 defaultValue=""
+                ref={imageSelectRef}
                 required
               >
                 <option value="" disabled>
@@ -76,7 +84,7 @@ const DialogAddNewCardGame = ({ addNewCard }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default DialogAddNewCardGame;
+export { DialogAddNewCardGame }

@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react'
 
-import { UsersTable } from "../../components/pages/users-table";
-import { UsersPagination } from "../../components/pages/users-pagination";
-import { DefaultLayout } from "../../layouts/DefaultLayout";
-import { UsersFilter } from "../../components/pages/users-filter";
-import { UsersListProvider } from "../../contexts/users-list";
-import { UsersPaginationProvider } from "../../contexts/users-pagination";
+import { UsersTable } from '../../components/pages/users-table'
+import { UsersPagination } from '../../components/pages/users-pagination'
+import { DefaultLayout } from '../../layouts/DefaultLayout'
+import { UsersFilter } from '../../components/pages/users-filter'
+import { UsersListProvider } from '../../contexts/users-list'
+import { UsersPaginationProvider } from '../../contexts/users-pagination'
 
-export const UsersPage = () => {
+const UsersPage = () => {
   return (
     <>
       <DefaultLayout>
@@ -20,5 +20,7 @@ export const UsersPage = () => {
         </UsersListProvider>
       </DefaultLayout>
     </>
-  );
-};
+  )
+}
+
+export { UsersPage }

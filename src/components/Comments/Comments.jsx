@@ -1,8 +1,10 @@
-import React from "react";
-import "./comments.css";
-import { COMMENTS } from "../../mocks/comments.mock";
+import React from 'react'
 
-export const Comments = () => {
+import './comments.css'
+
+import { COMMENTS } from '../../mocks/comments-mock'
+
+const Comments = () => {
   return (
     <section className="comments">
       <div className="comments-radius-left"></div>
@@ -21,9 +23,7 @@ export const Comments = () => {
                     <h3 className="comments-stars-item-headline">
                       <span>{comment.genre}</span> star
                     </h3>
-                    <p className="comments-stars-item-par">
-                      {comment.comment}
-                    </p>
+                    <p className="comments-stars-item-par">{comment.comment}</p>
                     <div className="comments-stars-item-names">
                       <img src={comment.img} alt={comment.alt} />
                       <div>
@@ -36,12 +36,14 @@ export const Comments = () => {
                       </div>
                     </div>
                   </li>
-                );
+                )
               })}
             </div>
           </ul>
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
+
+export { Comments }

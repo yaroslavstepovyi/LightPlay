@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 
 import './hero.css'
 
-import { USERS } from '../../mocks/users.mocks'
-import ExploreDeviceCube3D from '../../utils/explore-device-cube3D'
+import { USERS } from '../../mocks/users-mocks'
+import { ExploreDeviceCube3D } from '../../utils/explore-device-cube3D'
 
-export const Hero = () => {
+const Hero = () => {
   const [isVisualizing, setIsVisualizing] = useState(false)
 
   const toggleIsVisualizing = () => {
@@ -93,3 +93,5 @@ export const Hero = () => {
     </section>
   )
 }
+
+export { Hero }

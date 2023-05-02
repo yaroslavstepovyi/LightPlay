@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react'
 
-import "./values.css";
+import './values.css'
 
-import { VictoryHand, Stronger, Bulbe, Ok } from "../images";
+import { VictoryHand, Stronger, Bulbe, Ok } from '../images'
 
-export const Values = () => {
+const Values = () => {
   return (
     <section className="values">
       <div className="values__wrap">
         <div className="values__left">
           <h3>Our company values culture</h3>
           <p className="values__left-paragraph">
-            We specialize in creating visual identities for products and branda
+            We specialize in creating visual identities for products and brand
             in your company.
           </p>
         </div>
@@ -35,5 +35,7 @@ export const Values = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
+
+export { Values }

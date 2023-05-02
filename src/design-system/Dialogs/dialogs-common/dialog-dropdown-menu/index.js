@@ -1,5 +1,3 @@
-import DropdownUserMenu from "./DropdownUserMenu";
+import { DropdownUserMenu } from './DropdownUserMenu'
 
-export { 
-    DropdownUserMenu
-}
+export { DropdownUserMenu }

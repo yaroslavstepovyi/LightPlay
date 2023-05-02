@@ -1,17 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import React from 'react'
+import { NavLink, Link } from 'react-router-dom'
 
-import "./header.css";
+import './header.css'
 
-import { Logo } from "../../components/images";
-import { DialogSignIn } from "../dialogs";
-import { DropdownUserMenu } from "../dialogs/dialogs-common/dialog-dropdown-menu";
-import { NavigationLinks } from "../../routers";
-import { useAuth } from "../../hooks";
-import { decryptUser } from "../../utils/encryption-user";
-
-import withScroll from "../../hoc-helpers/with-scroll";
+import { Logo } from '../../components/images'
+import { DialogSignIn } from '../dialogs'
+import { DropdownUserMenu } from '../dialogs/dialogs-common/dialog-dropdown-menu'
+import { useAuth } from '../../hooks'
+import { decryptUser } from '../../utils/encryption-user'
+import { navigationLinks } from '../../consts/navigation-links'
+import { withScroll } from '../../hoc-helpers/with-scroll'
 
 const Header = ({ scroll }) => {
   const {
@@ -22,18 +20,18 @@ const Header = ({ scroll }) => {
     onHandleBurgerMenuToggle,
     onHandleUserIcon,
     isOpenDropdownMenu,
-  } = useAuth();
+  } = useAuth()
 
   const commonProps = {
     state,
-    NavigationLinks,
+    navigationLinks,
     onHandleOpenDialogSignIn,
     onHandleLogOut,
     onHandleBackgroundBlurHide,
     onHandleBurgerMenuToggle,
     onHandleUserIcon,
     isOpenDropdownMenu,
-  };
+  }
 
   return (
     <>
@@ -48,12 +46,12 @@ const Header = ({ scroll }) => {
         </>
       )}
     </>
-  );
-};
+  )
+}
 
 const DesktopHeader = ({
   state,
-  NavigationLinks,
+  navigationLinks,
   onHandleOpenDialogSignIn,
   onHandleBurgerMenuToggle,
   onHandleBackgroundBlurHide,
@@ -63,18 +61,18 @@ const DesktopHeader = ({
 }) => {
   return (
     <>
-      <header className={`${scroll ? "header scrolled" : "header"}`}>
+      <header className={`${scroll ? 'header scrolled' : 'header'}`}>
         <Link to="/">
           <img className="header-logo" src={Logo} alt="logo" />
         </Link>
         <div className="header-nav">
           <div className="header-nav-wrap">
             <ul className="header-links">
-              {NavigationLinks.map((link, idx) => (
+              {navigationLinks.map((link, idx) => (
                 <li
                   key={idx}
                   className={`header-link ${
-                    link.isActive ? "nav-bar-active" : null
+                    link.isActive ? 'nav-bar-active' : null
                   }`}
                 >
                   <NavLink to={link.path}>{link.label}</NavLink>
@@ -83,7 +81,7 @@ const DesktopHeader = ({
             </ul>
           </div>
           <div>
-            {localStorage.getItem("user") ? (
+            {localStorage.getItem('user') ? (
               <>
                 <img
                   src={decryptUser().img}
@@ -121,34 +119,33 @@ const DesktopHeader = ({
         ></button>
       </header>
     </>
-  );
-};
+  )
+}
 
 const MobileHeader = ({
-  NavigationLinks,
+  navigationLinks,
   state,
   onHandleBurgerMenuToggle,
   onHandleOpenDialogSignIn,
   onHandleLogOut,
 }) => {
-
-  return (
-    <>
-      {state.isBurgerMenuActive && (
+  function renderHeaderNavMobile() {
+    return (
+      state.isBurgerMenuActive && (
         <div className="header-nav-mobile" onClick={onHandleBurgerMenuToggle}>
           <ul className="header-links">
-            {NavigationLinks.map((link, idx) => (
+            {navigationLinks.map((link, idx) => (
               <li
                 key={idx}
                 className={`header-link ${
-                  link.isActive ? "nav-bar-active" : null
+                  link.isActive ? 'nav-bar-active' : ''
                 }`}
               >
                 <NavLink to={link.path}>{link.label}</NavLink>
               </li>
             ))}
             <li>
-              {localStorage.getItem("user") ? (
+              {localStorage.getItem('user') ? (
                 <button
                   type="submit"
                   className="header-nav-btn-mobile"
@@ -168,9 +165,11 @@ const MobileHeader = ({
             </li>
           </ul>
         </div>
-      )}
-    </>
-  );
-};
+      )
+    )
+  }
 
-export default withScroll(Header, 0);
+  return <>{renderHeaderNavMobile()}</>
+}
+
+export default withScroll(Header, 0)

@@ -7,7 +7,7 @@ import { DefaultLayout } from "../../layouts/DefaultLayout";
 import { GamesProvider } from "../../contexts/games-list";
 import { GamesPaginationProvider } from "../../contexts/games-pagination";
 
-export const GamesPage = () => {
+const GamesPage = () => {
   return (
     <>
       <DefaultLayout>
@@ -22,3 +22,5 @@ export const GamesPage = () => {
     </>
   );
 };
+
+export { GamesPage }

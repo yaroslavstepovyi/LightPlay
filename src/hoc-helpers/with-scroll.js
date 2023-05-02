@@ -20,4 +20,4 @@ const withScroll = (Component, startScroll) => {
   };
 };
 
-export default withScroll;
+export { withScroll };

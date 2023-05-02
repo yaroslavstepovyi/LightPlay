@@ -1,5 +1,3 @@
-import DialogAddNewCardGame from "./DialogAddNewCardGame";
+import { DialogAddNewCardGame } from './DialogAddNewCardGame'
 
-export {
-    DialogAddNewCardGame
-}
+export { DialogAddNewCardGame }
