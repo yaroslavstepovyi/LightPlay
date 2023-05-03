@@ -1,39 +1,41 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from 'react'
 
-import "./games-content.css";
+import './games-content.css'
 
-import { AuthContext } from "../../../contexts/auth-user";
-import { useAuth } from "../../../hooks";
-import { DialogSignIn } from "../../../design-system/dialogs";
-import {getDeafultGames} from "../../../services/default-games";
-import { decryptUser } from "../../../utils/encryption-user";
-import DialogGamesCard from "../games-card/DialogGamesCard";
-import { GamesContext } from "../../../contexts/games-list";
-import { GamesPaginationContext } from "../../../contexts/games-pagination";
+import { AuthContext } from '../../../contexts/auth-user'
+import { useAuth } from '../../../hooks'
+import { DialogSignIn } from '../../../design-system/dialogs'
+import { getDeafultGames } from '../../../services/default-games'
+import { decryptUser } from '../../../utils/encryption-user'
+import DialogGamesCard from '../games-card/DialogGamesCard'
+import { GamesContext } from '../../../contexts/games-list'
+import { GamesPaginationContext } from '../../../contexts/games-pagination'
 
 export const GamesContent = () => {
-  const { isloggedIn } = useContext(AuthContext);
-  const [showGamesCard, setShowGamesCard] = useState(false);
-  const { setGames } = useContext(GamesContext);
-  const user = decryptUser(localStorage.getItem("user"), "secret key");
-  const [selectedGame, setSelectedGame] = useState(null);
+  const { setGames } = useContext(GamesContext)
+  const { getPaginatedGames } = useContext(GamesPaginationContext)
   const { onHandleOpenDialogSignIn, onHandleBackgroundBlurHide, state } =
-    useAuth();
-  const { getPaginatedGames } = useContext(GamesPaginationContext);
+    useAuth()
+
+  const [selectedGame, setSelectedGame] = useState(null)
+  const [showGamesCard, setShowGamesCard] = useState(false)
+
+  const { isloggedIn } = useContext(AuthContext)
+  const user = decryptUser(localStorage.getItem('user'), 'secret key')
 
   useEffect(() => {
     getDeafultGames().then(() => {
-      const savedGames = JSON.parse(localStorage.getItem("games"));
+      const savedGames = JSON.parse(localStorage.getItem('games'))
       if (savedGames) {
-        setGames(savedGames);
+        setGames(savedGames)
       }
-    });
-  }, [setGames]);
+    })
+  }, [setGames])
 
   const handleGamesCard = (game) => {
-    setSelectedGame(game);
-    setShowGamesCard(true);
-  };
+    setSelectedGame(game)
+    setShowGamesCard(true)
+  }
 
   return (
     <>
@@ -77,7 +79,8 @@ export const GamesContent = () => {
               <p>
                 <button
                   className="content__empty-games__sign-in-btn"
-                  onClick={onHandleOpenDialogSignIn}>
+                  onClick={onHandleOpenDialogSignIn}
+                >
                   Sign in
                 </button>
                 for adding games
@@ -108,5 +111,5 @@ export const GamesContent = () => {
         </>
       )}
     </>
-  );
-};
+  )
+}
