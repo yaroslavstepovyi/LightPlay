@@ -1,5 +1,3 @@
-import DialogGamesCard from "./games-card";
+import { DialogGamesCard } from './games-card'
 
-export { 
-    DialogGamesCard
-}
+export { DialogGamesCard }

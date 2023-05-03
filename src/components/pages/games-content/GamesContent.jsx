@@ -11,7 +11,7 @@ import DialogGamesCard from '../games-card/DialogGamesCard'
 import { GamesContext } from '../../../contexts/games-list'
 import { GamesPaginationContext } from '../../../contexts/games-pagination'
 
-export const GamesContent = () => {
+const GamesContent = () => {
   const { setGames } = useContext(GamesContext)
   const { getPaginatedGames } = useContext(GamesPaginationContext)
   const { onHandleOpenDialogSignIn, onHandleBackgroundBlurHide, state } =
@@ -113,3 +113,5 @@ export const GamesContent = () => {
     </>
   )
 }
+
+export { GamesContent }
