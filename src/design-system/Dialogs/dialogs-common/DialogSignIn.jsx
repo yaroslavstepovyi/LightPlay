@@ -3,13 +3,11 @@ import React, { useState, useContext } from 'react'
 import './dialog.css'
 
 import { DialogWrapper } from './DialogWrapper'
-import { getUsers } from '../../../mocks/users-mocks'
-import { AuthContext } from '../../../contexts/auth-user'
-import { validateCredentials } from '../../../utils/user-validation'
-import { setItemInLocalStorage } from '../../../utils/local-storage-utils'
-import { login } from '../../../utils/user-validation'
-import { resetForm } from '../../../utils/user-validation'
-import { encryptUser } from '../../../utils/encryption-user'
+import { getUsers } from '../../../mocks/usersMocks'
+import { AuthContext } from '../../../contexts/authUser'
+import { validateCredentials, login, resetForm } from '../../../utils/userValidation'
+import { setItemInLocalStorage } from '../../../utils/localStorageUtils'
+import { encryptUser } from '../../../utils/encryptionUser'
 
 const DialogSignIn = ({ onHandleBackgroundBlurHide }) => {
   const { isloggedIn, setIsLoggedIn, setLoggedInUser } = useContext(AuthContext)

@@ -1,6 +1,6 @@
 import React, { useState, useContext, createContext } from 'react'
 
-import { usersContext } from './users-list'
+import { usersContext } from './usersList'
 import { getPagination } from '../utils/pagination'
 
 const UsersPaginationContext = createContext()

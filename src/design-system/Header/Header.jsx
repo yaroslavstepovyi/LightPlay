@@ -7,9 +7,9 @@ import { Logo } from '../../components/images'
 import { DialogSignIn } from '../dialogs'
 import { DropdownUserMenu } from '../dialogs/dialogs-common/dialog-dropdown-menu'
 import { useAuth } from '../../hooks'
-import { decryptUser } from '../../utils/encryption-user'
-import { navigationLinks } from '../../consts/navigation-links'
-import { withScroll } from '../../hoc-helpers/with-scroll'
+import { decryptUser } from '../../utils/encryptionUser'
+import { navigationLinks } from '../../consts/navigationLinks'
+import { withScroll } from '../../hoc-helpers/withScroll'
 
 const Header = ({ scroll }) => {
   const {

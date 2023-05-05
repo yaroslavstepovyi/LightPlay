@@ -2,14 +2,14 @@ import React, { useContext, useState, useEffect } from 'react'
 
 import './games-content.css'
 
-import { AuthContext } from '../../../contexts/auth-user'
+import { AuthContext } from '../../../contexts/authUser'
 import { useAuth } from '../../../hooks'
 import { DialogSignIn } from '../../../design-system/dialogs'
-import { getDeafultGames } from '../../../services/default-games'
-import { decryptUser } from '../../../utils/encryption-user'
+import { getDeafultGames } from '../../../services/defaultGames'
+import { decryptUser } from '../../../utils/encryptionUser'
 import DialogGamesCard from '../games-card/DialogGamesCard'
-import { GamesContext } from '../../../contexts/games-list'
-import { GamesPaginationContext } from '../../../contexts/games-pagination'
+import { GamesContext } from '../../../contexts/gamesList'
+import { GamesPaginationContext } from '../../../contexts/gamesPagination'
 
 const GamesContent = () => {
   const { setGames } = useContext(GamesContext)

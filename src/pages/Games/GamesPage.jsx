@@ -4,8 +4,8 @@ import { GamesFilter } from "../../components/pages/games-filter";
 import { GamesContent } from "../../components/pages/games-content";
 import { GamesPagination } from "../../components/pages/games-pagination";
 import { DefaultLayout } from "../../layouts/DefaultLayout";
-import { GamesProvider } from "../../contexts/games-list";
-import { GamesPaginationProvider } from "../../contexts/games-pagination";
+import { GamesProvider } from "../../contexts/gamesList";
+import { GamesPaginationProvider } from "../../contexts/gamesPagination";
 
 const GamesPage = () => {
   return (

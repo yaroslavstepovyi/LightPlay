@@ -2,8 +2,8 @@ import React, { useContext } from 'react'
 
 import './games-pagination.css'
 
-import { AuthContext } from '../../../contexts/auth-user'
-import { GamesPaginationContext } from '../../../contexts/games-pagination'
+import { AuthContext } from '../../../contexts/authUser'
+import { GamesPaginationContext } from '../../../contexts/gamesPagination'
 import { ArrowLeft, ArrowRight } from '../../../services/images'
 
 export const GamesPagination = () => {

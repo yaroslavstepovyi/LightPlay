@@ -7,7 +7,7 @@ import { HomePage } from '../home'
 import { GamesPage } from '../games'
 import { UsersPage } from '../users'
 import { ErrorBoundary } from '../../components/common/error-boundary/ErrorBoundary'
-import { AuthProvider } from '../../contexts/auth-user'
+import { AuthProvider } from '../../contexts/authUser'
 
 const App = () => {
   return (

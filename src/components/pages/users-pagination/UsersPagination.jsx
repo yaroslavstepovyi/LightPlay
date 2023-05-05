@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 
 import '../games-pagination/games-pagination.css'
 
-import { UsersPaginationContext } from '../../../contexts/users-pagination'
+import { UsersPaginationContext } from '../../../contexts/usersPagination'
 import { ArrowLeft, ArrowRight } from '../../../services/images'
 
 export const UsersPagination = () => {

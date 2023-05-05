@@ -2,8 +2,8 @@ import React from 'react'
 
 import './footer.css'
 
-import { WELLCOME_MESSAGE } from '../../utils/send-email'
-import { useEmailSender } from '../../contexts/send-email'
+import { WELLCOME_MESSAGE } from '../../utils/sendEmail'
+import { useEmailSender } from '../../contexts/sendEmail'
 
 const Footer = () => {
   const { 

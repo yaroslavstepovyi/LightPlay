@@ -1,6 +1,6 @@
 import { createContext, useState, useContext } from 'react'
 
-import { GamesContext } from './games-list'
+import { GamesContext } from './gamesList'
 import { getPagination } from '../utils/pagination'
 
 const GamesPaginationContext = createContext()

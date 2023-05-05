@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 
 import './dropdown-user-menu.css'
 
-import { AuthContext } from '../../../../contexts/auth-user'
-import { removeFromLocalStorage } from '../../../../utils/local-storage-utils'
+import { AuthContext } from '../../../../contexts/authUser'
+import { removeFromLocalStorage } from '../../../../utils/localStorageUtils'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faCog } from '@fortawesome/free-solid-svg-icons'
 import {faQuestionCircle, faSignOutAlt} from '@fortawesome/free-solid-svg-icons'

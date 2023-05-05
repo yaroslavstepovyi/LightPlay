@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react'
 
-import { AuthContext } from '../contexts/auth-user'
+import { AuthContext } from '../contexts/authUser'
 
 const useAuth = () => {
   const [isOpenDropdownMenu, setIsOpenDropdownMenu] = useState(false)

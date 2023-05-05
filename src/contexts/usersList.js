@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from 'react'
 
-import { getUsers, USERS } from '../mocks/users-mocks'
+import { getUsers, USERS } from '../mocks/usersMocks'
 
 import { sortFunctions } from '../utils/sort'
 

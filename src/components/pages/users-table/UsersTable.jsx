@@ -1,40 +1,33 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react'
 
-import "./users-table.css";
+import './users-table.css'
 
-import { Dots } from "../../images";
-import { UsersRoleModal } from "./users-role-modal";
-import { usersContext } from "../../../contexts/users-list";
-import { decryptUser } from "../../../utils/encryption-user";
-import { UsersPaginationContext } from "../../../contexts/users-pagination";
+import { Dots } from '../../images'
+import { UsersRoleModal } from './users-role-modal'
+import { usersContext } from '../../../contexts/usersList'
+import { decryptUser } from '../../../utils/encryptionUser'
+import { UsersPaginationContext } from '../../../contexts/usersPagination'
 
 export const UsersTable = () => {
   const { getPaginatedUsers } = useContext(UsersPaginationContext)
-  const loggedUser = decryptUser(localStorage.getItem("user"), "secret key");
+  const loggedUser = decryptUser(localStorage.getItem('user'), 'secret key')
 
-  const {
-    handleRoleSelect,
-    activeUserId,
-    setActiveUserId,
-    activeUserName,
-  } = useContext(usersContext);
+  const { handleRoleSelect, activeUserId, setActiveUserId, activeUserName } =
+    useContext(usersContext)
 
   const handleUserClick = (user) => {
-    const updatedUser = decryptUser(
-    localStorage
-    .getItem("user"), "secret key"
-    );
+    const updatedUser = decryptUser(localStorage.getItem('user'), 'secret key')
 
     if (!updatedUser) {
-      return;
+      return
     }
 
     if (user.id === updatedUser.id) {
-      return;
+      return
     }
 
-    handleRoleSelect(user.id, user.name);
-  };
+    handleRoleSelect(user.id, user.name)
+  }
 
   return (
     <section className="users">
@@ -103,5 +96,5 @@ export const UsersTable = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}

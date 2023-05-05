@@ -1,3 +1,3 @@
-import { withScroll } from './with-scroll'
+import { withScroll } from './withScroll'
 
 export { withScroll }

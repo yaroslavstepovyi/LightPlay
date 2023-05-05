@@ -4,8 +4,8 @@ import { UsersTable } from '../../components/pages/users-table'
 import { UsersPagination } from '../../components/pages/users-pagination'
 import { DefaultLayout } from '../../layouts/DefaultLayout'
 import { UsersFilter } from '../../components/pages/users-filter'
-import { UsersListProvider } from '../../contexts/users-list'
-import { UsersPaginationProvider } from '../../contexts/users-pagination'
+import { UsersListProvider } from '../../contexts/usersList'
+import { UsersPaginationProvider } from '../../contexts/usersPagination'
 
 const UsersPage = () => {
   return (

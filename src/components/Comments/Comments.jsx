@@ -2,7 +2,7 @@ import React from 'react'
 
 import './comments.css'
 
-import { COMMENTS } from '../../mocks/comments-mock'
+import { COMMENTS } from '../../mocks/commentsMock'
 
 const Comments = () => {
   return (

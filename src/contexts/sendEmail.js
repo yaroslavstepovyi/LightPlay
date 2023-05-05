@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import { sendEmail } from '../utils/send-email'
+import { sendEmail } from '../utils/sendEmail'
 
 const useEmailSender = () => {
   const [emailValue, setEmailValue] = useState('')

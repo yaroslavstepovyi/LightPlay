@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
 
 import { getDeafultGames } from '../services'
-import { GamesContext } from '../contexts/games-list'
+import { GamesContext } from '../contexts/gamesList'
 
 const useHandleGameCards = () => {
   const [isDialogVisible, setIsDialogVisible] = useState(false)
