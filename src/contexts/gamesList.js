@@ -1,11 +1,13 @@
 import { createContext, useState, useEffect } from 'react'
+
 import { sortFunctions } from '../utils/sort'
+import { setItemLocalStorage, getItemFromLocalStorage } from '../utils/localStorageUtils'
 
 const GamesContext = createContext()
 
 const GamesProvider = ({ children }) => {
   const [games, setGames] = useState(
-    JSON.parse(localStorage.getItem('games')) || [],
+    getItemFromLocalStorage("games") || [],
   )
   const [sortOption, setSortOption] = useState('default')
   const [sortedGames, setSortedGames] = useState(games)
@@ -21,7 +23,7 @@ const GamesProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    localStorage.setItem('games', JSON.stringify(games))
+    setItemLocalStorage("games", games)
     setSortedGames(games)
   }, [games])
 

@@ -7,16 +7,23 @@ import { UsersRoleModal } from './users-role-modal'
 import { usersContext } from '../../../contexts/usersList'
 import { decryptUser } from '../../../utils/encryptionUser'
 import { UsersPaginationContext } from '../../../contexts/usersPagination'
+import { getItemFromLocalStorage } from '../../../utils/localStorageUtils'
 
 export const UsersTable = () => {
   const { getPaginatedUsers } = useContext(UsersPaginationContext)
-  const loggedUser = decryptUser(localStorage.getItem('user'), 'secret key')
+  const loggedUser = decryptUser(
+    getItemFromLocalStorage('user'),
+    process.env.REACT_APP_ENCRYPT_KEY_USER,
+  )
 
   const { handleRoleSelect, activeUserId, setActiveUserId, activeUserName } =
     useContext(usersContext)
 
   const handleUserClick = (user) => {
-    const updatedUser = decryptUser(localStorage.getItem('user'), 'secret key')
+    const updatedUser = decryptUser(
+      getItemFromLocalStorage('user'),
+      process.env.REACT_APP_ENCRYPT_KEY_USER,
+    )
 
     if (!updatedUser) {
       return

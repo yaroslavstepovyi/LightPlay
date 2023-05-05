@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import './hero.css'
 
 import { USERS } from '../../mocks/usersMocks'
-import { ExploreDeviceCube3D } from '../../utils/exploreDeviceCube3D'
+import { ExploreDeviceCube3D } from '../cube'
 
 const Hero = () => {
   const [isVisualizing, setIsVisualizing] = useState(false)

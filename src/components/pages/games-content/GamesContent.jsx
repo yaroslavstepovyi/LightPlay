@@ -10,6 +10,7 @@ import { decryptUser } from '../../../utils/encryptionUser'
 import DialogGamesCard from '../games-card/DialogGamesCard'
 import { GamesContext } from '../../../contexts/gamesList'
 import { GamesPaginationContext } from '../../../contexts/gamesPagination'
+import { getItemFromLocalStorage } from '../../../utils/localStorageUtils'
 
 const GamesContent = () => {
   const { setGames } = useContext(GamesContext)
@@ -21,11 +22,14 @@ const GamesContent = () => {
   const [showGamesCard, setShowGamesCard] = useState(false)
 
   const { isloggedIn } = useContext(AuthContext)
-  const user = decryptUser(localStorage.getItem('user'), 'secret key')
+  const user = decryptUser(
+    localStorage.getItem('user'),
+    process.env.REACT_APP_ENCRYPT_KEY_USER,
+  )
 
   useEffect(() => {
     getDeafultGames().then(() => {
-      const savedGames = JSON.parse(localStorage.getItem('games'))
+      const savedGames = getItemFromLocalStorage('games')
       if (savedGames) {
         setGames(savedGames)
       }

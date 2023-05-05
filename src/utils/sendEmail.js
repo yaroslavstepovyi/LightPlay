@@ -9,22 +9,21 @@ const WELLCOME_MESSAGE = `
   joining us on this journey, and we can't wait to see what we can
   achieve together!`
 
-const sendEmail = (formData, setShowAlert) => {
-  const serviceId = 'service_b7u1b76'
-  const templateId = 'template_8v2vbue'
-  const userId = 'c7r7Ishe4hocmzPcD'
+const sendEmail = (form, setShowAlert) => {
 
-  const userEmail = formData.get('emailValue')
+  const serviceId = process.env.REACT_APP_SERVICE_ID
+  const templateId = process.env.REACT_APP_TEMPLATE_ID
+  const userId = process.env.REACT_APP_USER_ID
+
+  const userEmail = form.current.userEmail.value
 
   emailjs
-    .sendForm(serviceId, templateId, formData, userId, formData, {
+    .sendForm(serviceId, templateId, form.current, userId, {
       to_email: userEmail,
       message: WELLCOME_MESSAGE,
     })
     .then(
       () => {
-        console.log('Email sent successfully')
-
         setShowAlert(true)
 
         setTimeout(() => {

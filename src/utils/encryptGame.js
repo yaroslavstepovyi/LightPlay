@@ -3,7 +3,7 @@ import CryptoJS from 'crypto-js'
 const encryptGame = (GameObject) => {
   return CryptoJS.AES.encrypt(
     JSON.stringify(GameObject),
-    'secret game key',
+    process.env.REACT_APP_ENCRYPt_KEY_GAMES,
   ).toString()
 }
 
@@ -11,7 +11,7 @@ const decryptGame = (encryptedGames) => {
   try {
     const decrypted = CryptoJS.AES.decrypt(
       encryptedGames,
-      'secret game key',
+      process.env.REACT_APP_ENCRYPt_KEY_GAMES,
     ).toString()
 
     return JSON.parse(decrypted)

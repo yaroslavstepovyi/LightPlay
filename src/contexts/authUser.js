@@ -1,23 +1,26 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from 'react'
 
+import { setItemLocalStorage } from '../utils/localStorageUtils'
 
-const AuthContext = createContext();
+const AuthContext = createContext()
 
-const AuthProvider = ({ children }) =>{
-    const [loggedInUser, setLoggedInUser] = useState(null);
-    const [isloggedIn, setIsLoggedIn] = useState(() => {
-        return localStorage.getItem("isLoggedIn") === "true";
-    })
+const AuthProvider = ({ children }) => {
+  const [loggedInUser, setLoggedInUser] = useState(null)
+  const [isloggedIn, setIsLoggedIn] = useState(() => {
+    return localStorage.getItem('isLoggedIn') === 'true'
+  })
 
-    useEffect(() => {
-        localStorage.setItem("isLoggedIn", isloggedIn);
-      }, [isloggedIn]);
+  useEffect(() => {
+    setItemLocalStorage('isLoggedIn', isloggedIn)
+  }, [isloggedIn])
 
-    return (
-        <AuthContext.Provider value={{isloggedIn, setIsLoggedIn, setLoggedInUser, loggedInUser}}>
-            {children}
-        </AuthContext.Provider>
-    )
+  return (
+    <AuthContext.Provider
+      value={{ isloggedIn, setIsLoggedIn, setLoggedInUser, loggedInUser }}
+    >
+      {children}
+    </AuthContext.Provider>
+  )
 }
 
-export {AuthContext, AuthProvider};
+export { AuthContext, AuthProvider }

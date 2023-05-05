@@ -11,7 +11,7 @@ const validateCredentials = (users, email, password) => {
 const login = (
   userObject,
   setLoggedInUser,
-  setItemInLocalStorage,
+  updateItemInLocalStorage,
   setIsLoggedIn,
   onHandleBackgroundBlurHide,
   encryptUser,
@@ -19,7 +19,7 @@ const login = (
 ) => {
   const encryptedUser = encryptUser(userObject)
   setLoggedInUser(userObject)
-  setItemInLocalStorage('user', encryptedUser)
+  updateItemInLocalStorage('user', encryptedUser)
   setIsLoggedIn(true)
   onHandleBackgroundBlurHide(false)
   resetForm()

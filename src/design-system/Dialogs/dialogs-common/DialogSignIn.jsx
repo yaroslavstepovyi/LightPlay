@@ -6,7 +6,7 @@ import { DialogWrapper } from './DialogWrapper'
 import { getUsers } from '../../../mocks/usersMocks'
 import { AuthContext } from '../../../contexts/authUser'
 import { validateCredentials, login, resetForm } from '../../../utils/userValidation'
-import { setItemInLocalStorage } from '../../../utils/localStorageUtils'
+import { updateItemInLocalStorage } from '../../../utils/localStorageUtils'
 import { encryptUser } from '../../../utils/encryptionUser'
 
 const DialogSignIn = ({ onHandleBackgroundBlurHide }) => {
@@ -23,7 +23,7 @@ const DialogSignIn = ({ onHandleBackgroundBlurHide }) => {
         login(
           userObject,
           setLoggedInUser,
-          setItemInLocalStorage,
+          updateItemInLocalStorage,
           setIsLoggedIn,
           onHandleBackgroundBlurHide,
           encryptUser,

@@ -1,26 +1,29 @@
 import CryptoJS from 'crypto-js'
+import { getItemFromLocalStorage } from './localStorageUtils'
 
 const encryptUser = (userObject) => {
   return CryptoJS.AES.encrypt(
     JSON.stringify(userObject),
-    'secret key',
+    process.env.REACT_APP_ENCRYPT_KEY_USER,
   ).toString()
 }
 
 const decryptUser = () => {
-  const encryptedUser = JSON.parse(localStorage.getItem('user'))
-  let decryptedUser = null
+  const encryptedUser = getItemFromLocalStorage('user')
 
   if (encryptedUser) {
-    const decrypted = CryptoJS.AES.decrypt(encryptedUser, 'secret key')
+    const decrypted = CryptoJS.AES.decrypt(
+      encryptedUser,
+      process.env.REACT_APP_ENCRYPT_KEY_USER,
+    )
     try {
-      decryptedUser = JSON.parse(decrypted.toString(CryptoJS.enc.Utf8))
+      return JSON.parse(decrypted.toString(CryptoJS.enc.Utf8))
     } catch (err) {
       console.error('error decrypt user', err)
     }
   }
 
-  return decryptedUser
+  return null
 }
 
 export { encryptUser, decryptUser }

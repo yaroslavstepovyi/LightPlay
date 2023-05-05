@@ -1,6 +1,8 @@
 import { useState, useRef } from 'react'
 
 import { getImageUrl } from '../services/images'
+import { getItemFromLocalStorage } from '../utils/localStorageUtils'
+import { MIN_LENGTH, MAX_LENGTH } from './consts'
 
 const useAddNewCard = (addNewCard) => {
   const [nameError, setNameError] = useState('')
@@ -13,9 +15,6 @@ const useAddNewCard = (addNewCard) => {
   const imageSelectRef = useRef(null)
 
   const handleLimitInput = (field, setError) => {
-    const MIN_LENGTH = 6
-    const MAX_LENGTH = 40
-
     if (field.length < MIN_LENGTH || field.length > MAX_LENGTH) {
       setError(
         `*${field} must be between ${MIN_LENGTH} to ${MAX_LENGTH} characters long.`,
@@ -52,10 +51,10 @@ const useAddNewCard = (addNewCard) => {
       const id = Math.floor(Math.random() * 1000)
       const newGame = { id, name, description, review, img: imageUrl }
 
-      const storedGames = JSON.parse(localStorage.getItem('games'))
+      const storedGames = getItemFromLocalStorage('games')
       if (storedGames) {
         const existingGame = storedGames.find((game) => game.img === imageUrl)
-        
+
         if (existingGame) {
           resetForm()
           return

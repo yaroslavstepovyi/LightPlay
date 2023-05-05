@@ -2,19 +2,22 @@ import { useState, useEffect, useContext } from 'react'
 
 import { getDeafultGames } from '../services'
 import { GamesContext } from '../contexts/gamesList'
+import { getItemFromLocalStorage, setItemLocalStorage } from '../utils/localStorageUtils'
 
 const useHandleGameCards = () => {
   const [isDialogVisible, setIsDialogVisible] = useState(false)
   const { games, setGames } = useContext(GamesContext)
 
   useEffect(() => {
-    const savedGames = JSON.parse(localStorage.getItem('games'))
-    savedGames
-      ? setGames(savedGames)
-      : getDeafultGames().then((defaultGames) => {
-          localStorage.setItem('games', JSON.stringify(defaultGames))
-          setGames(defaultGames)
-        })
+    const savedGames = getItemFromLocalStorage('games')
+    if (savedGames) {
+      setGames(savedGames)
+    } else {
+      getDeafultGames().then((defaultGames) => {
+        setItemLocalStorage('games', defaultGames)
+        setGames(defaultGames)
+      })
+    }
   }, [setGames])
 
   const onAddNewCard = () => {
@@ -24,7 +27,7 @@ const useHandleGameCards = () => {
   const addNewCard = (newGame) => {
     const updatedGames = [...games, newGame]
     setGames(updatedGames)
-    localStorage.setItem('games', JSON.stringify(updatedGames))
+    setItemLocalStorage('games', updatedGames)
     setIsDialogVisible(false)
   }
 

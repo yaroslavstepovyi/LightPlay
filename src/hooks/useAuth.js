@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react'
 
 import { AuthContext } from '../contexts/authUser'
+import { removeFromLocalStorage } from '../utils/localStorageUtils'
 
 const useAuth = () => {
   const [isOpenDropdownMenu, setIsOpenDropdownMenu] = useState(false)
@@ -38,7 +39,7 @@ const useAuth = () => {
 
   const { setIsLoggedIn } = useContext(AuthContext)
   const onHandleLogOut = () => {
-    localStorage.removeItem('user')
+    removeFromLocalStorage('user')
     onHandleBackgroundBlurHide(false)
     setIsLoggedIn(false)
   }

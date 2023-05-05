@@ -9,15 +9,14 @@ const useEmailSender = () => {
   const onEmailInputChange = (e) => {
     setEmailValue(e.target.value)
 
-    const ENTER_KEY_CODE = 13
-    if (e.key === ENTER_KEY_CODE) {
+    if (e.key === 13) { //13 (Enter)
       sendEmail(e)
     }
   }
 
   const onSubmit = (e) => {
     e.preventDefault()
-    sendEmail(e, setShowAlert)
+    sendEmail(form, setShowAlert)
   }
 
   return {

@@ -1,7 +1,5 @@
 import React from 'react'
-
 import './comments.css'
-
 import { COMMENTS } from '../../mocks/commentsMock'
 
 const Comments = () => {

@@ -42,9 +42,11 @@ const defaultGames = [
 const getDeafultGames = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      defaultGames
-        ? resolve(defaultGames)
-        : reject(new Error('Error fetching users'))
+      if (defaultGames) {
+        resolve(defaultGames)
+      } else {
+        reject(new Error('Error fetching users'))
+      }
     }, 1500)
   })
 }

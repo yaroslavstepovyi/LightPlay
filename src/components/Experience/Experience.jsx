@@ -1,14 +1,8 @@
 import React from 'react'
-
 import './experience.css'
+import { isValidUrl } from '../../utils/validateURL'
 
 import { MaskGirl, MaskMan } from '../images/index.js'
-
-const isValidUrl = (url) => {
-  const urlPattern =
-    /^(http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i
-  return urlPattern.test(url)
-}
 
 const redirectTo = (url) => {
   if (isValidUrl(url)) {
